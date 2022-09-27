@@ -51,7 +51,8 @@ async def send_doc(client,message):
        		return
        date = message.date
        _used_date = find_one(user_id)
-       used_date = _used_date["date"]      
+       used_date = _used_date["date"] 
+       print(used_date)
        c_time = time.time()
        LIMIT = 240
        then = used_date+ LIMIT
