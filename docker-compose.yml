@@ -9,3 +9,4 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_URL=${DB_URL}
       - CHANNEL=${CHANNEL}
+      _ ADMIN=${ADMIN}
