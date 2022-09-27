@@ -48,8 +48,7 @@ async def doc(bot,update):
      old_file_name =f"downloads/{dow_file_name}"
      os.rename(old_file_name,file_path)
      user_id = int(update.message.chat.id)
-     #thumb = find(user_id)
-     thumb = None
+     thumb = find(user_id)
      if thumb:
      		ph_path = await bot.download_media(thumb)
      		Image.open(ph_path).convert("RGB").save(ph_path)
