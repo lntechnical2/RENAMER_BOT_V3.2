@@ -23,7 +23,7 @@ def addthumb(chat_id, file_id):
 def delthumb(chat_id):
 	dbcol.update_one({"_id":chat_id},{"$set":{"file_id":None}})
 	
-def dateupdae(chat_id,date):
+def dateupdate(chat_id,date):
 	dbcol.update_one({"_id":chat_id},{"$set":{"date":date}})
 	
 def find(chat_id):
