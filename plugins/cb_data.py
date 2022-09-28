@@ -21,9 +21,9 @@ async def rename(bot,update):
 	date = int(time.mktime(time.strptime(date_fa, pattern)))
 	chat_id = update.message.from_user.id
 	id = update.message.reply_to_message_id
-	
+	print(update.message)
 	await update.message.delete()
-	await update.message.reply_text(f"__Please enter the new {update.message}{chat_id}{date}filename...__",reply_to_message_id = id,
+	await update.message.reply_text(f"__Please enter the new filename...__",reply_to_message_id = id,
 	reply_markup=ForceReply(True) )
 	dateupdate(chat_id,date)
 	
