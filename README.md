@@ -9,7 +9,7 @@ Telegram renamer bot
 
 ## Configs 
 
-* TG_BOT_TOKEN  - Get bot token from @BotFather
+* TOKEN  - Get bot token from @BotFather
 
 * API_ID        - From my.telegram.org 
 
