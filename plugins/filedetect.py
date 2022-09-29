@@ -13,9 +13,9 @@ async def refunc(client,message):
         	mime = types[0]
         	mg_id = media.reply_to_message_id
         	try:
-        		out = new_name.split(".")
-        		out_name = out[1]
-        		out_filename = out[0] + "."+ out_name
+        		out = filename.split(".")
+        		out_name = out[-1]
+        		out_filename = new_name + "."+ out_name
         		await message.reply_to_message.delete()
         		if mime == "video":
         			markup = InlineKeyboardMarkup([[ 
@@ -27,12 +27,12 @@ async def refunc(client,message):
         		else:
         			markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📁 Document",callback_data = "doc") ]])
         		# dont chenge this message.reply_text     			        		
-        		await message.reply_text(f"**Select the output file type**\n**Output FileName** :- ```{out_filename}```",reply_to_message_id=mg_id,reply_markup = markup)
+        		await message.reply_text(f"**Select the output file type**\n**Output FileName** :-```{out_filename}```",reply_to_message_id=mg_id,reply_markup = markup)
         		
         	except:
         		try:
         			out = filename.split(".")
-        			out_name = out[1]
+        			out_name = out[-1]
         			out_filename= new_name + "."+ out_name
         		except:
         			await message.reply_to_message.delete()
@@ -49,6 +49,6 @@ async def refunc(client,message):
         		else:
         			markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📁 Document",callback_data = "doc") ]])
         		# dont chenge this message.reply_text 
-        		await message.reply_text(f"**Select the output file type**\n**Output FileName** :- ```{out_filename}```",
+        		await message.reply_text(f"**Select the output file type**\n**Output FileName** :-```{out_filename}```",
         		reply_to_message_id=mg_id,reply_markup = markup)
         		
