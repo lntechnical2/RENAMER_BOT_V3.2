@@ -17,8 +17,8 @@ Telegram renamer bot
 
 * ADMIN         - Your User ID 
 
-* DATABASE_URI  - Mongo Database URL from https://cloud.mongodb.com/
+* DB_URI  - Mongo Database URL from https://cloud.mongodb.com/
 
-* DATABASE_NAME  - Your database name from mongoDB. Default will be 'my'
+* DB_NAME  - Your database name from mongoDB. Default will be 'my'
 
 * CHANNEL        - Channel user Name without @
