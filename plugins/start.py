@@ -15,7 +15,7 @@ currentTime = datetime.datetime.now()
 
 if currentTime.hour < 12:
 	wish = "Good morning."
-elif 12 <= currentTime.hour < 18:
+elif 12 <= currentTime.hour < 12:
 	wish = 'Good afternoon.'
 else:
 	wish = 'Good evening.'
