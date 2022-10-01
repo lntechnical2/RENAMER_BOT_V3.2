@@ -22,3 +22,8 @@ Telegram renamer bot
 * DB_NAME  - Your database name from mongoDB. Default will be 'my'
 
 * CHANNEL        - Channel user Name without @
+
+# Tutorial Video 
+
+<a href="https://youtu.be/03jQRyMVFCs"><img src="https://img.shields.io/badge/How%20To%20Deploy-blue.svg?logo=Youtube"></a>
+<a href="https://youtu.be/03jQRyMVFCs"><img src="https://img.shields.io/youtube/views/03jQRyMVFCs?style=social">
