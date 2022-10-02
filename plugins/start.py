@@ -67,7 +67,7 @@ async def send_doc(client,message):
        		dcid = FileId.decode(file.file_id).dc_id
        		filename = file.file_name
        		value = 2000000000
-       		if value > file.file_size:
+       		if value < file.file_size:
        		          await message.reply_text("Can't upload files bigger than 2GB ")
        		          return
        		filesize = humanize.naturalsize(file.file_size)
