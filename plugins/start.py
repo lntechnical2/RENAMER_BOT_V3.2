@@ -66,6 +66,10 @@ async def send_doc(client,message):
        		file = media.document or media.video or media.audio 
        		dcid = FileId.decode(file.file_id).dc_id
        		filename = file.file_name
+                value = 2000000000
+                if value > file.file_size:
+                   await message.reply_text("Can't upload files bigger than 2GB ")
+                   return
        		filesize = humanize.naturalsize(file.file_size)
        		fileid = file.file_id
        		await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid}""",
