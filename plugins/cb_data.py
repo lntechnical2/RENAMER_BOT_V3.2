@@ -5,7 +5,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from helper.database import find , dateupdate
 import os
-from PIL import Image
+import Image
 import time
 
 @Client.on_callback_query(filters.regex('cancel'))
