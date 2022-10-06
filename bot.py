@@ -19,7 +19,7 @@ if STRING:
            api_hash=API_HASH,
            plugins=dict(root='plugins'))
         bot.run()
-        app.run()
+        app.start()
         
 else:
 	bot = Client(
