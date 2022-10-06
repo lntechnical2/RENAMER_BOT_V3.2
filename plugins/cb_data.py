@@ -40,7 +40,9 @@ async def doc(bot,update):
      name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
-     file = update.message.reply_to_message
+     mg_id = update.message.reply_to_message.message.id
+     media = await client.get_messages(update.message.chat.id,mg_id)
+     file = media.document or media.video or media.audio
      # for 4gb files ............
      value = 2099999999
      if value < file.file_size:
