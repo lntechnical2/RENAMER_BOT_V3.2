@@ -13,7 +13,7 @@ STRING = os.environ.get("STRING", "")
 
 if STRING:
 	async def main():
-	     bots =[Client(":memory:",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins')),Client2 ]
+	     bots =[Client("mybot",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins')),Client2 ]
 	          
 	     for bot in bots:
 	          await bot.start()
@@ -23,5 +23,5 @@ if STRING:
 	asyncio.run(main())
 	
 else:
-	bot = Client(":memory:",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins'))
+	bot = Client("mybot",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins'))
 	bot.run()	        
