@@ -16,13 +16,14 @@ if STRING:
 
         bot = Client(
 
-           "renamer",
+           ":memory:",
 
            bot_token=TOKEN,
 
            api_id=API_ID,
 
            api_hash=API_HASH,
+           in_memory=True'
 
            plugins=dict(root='plugins'))
 
@@ -34,13 +35,14 @@ if STRING:
 
 else:
 
-	bot = Client(           "renamer",
+	bot = Client( ":memory:",
 
            bot_token=TOKEN,
 
            api_id=API_ID,
 
            api_hash=API_HASH,
+           in_memory=True,
 
            plugins=dict(root='plugins')) 
 
