@@ -1,7 +1,7 @@
 from pyrogram import Client
 import os
 
-feom plugins.cb_data import app
+from plugins.cb_data import app
 TOKEN = os.environ.get("TOKEN", "")
 
 API_ID = int(os.environ.get("API_ID", ""))
