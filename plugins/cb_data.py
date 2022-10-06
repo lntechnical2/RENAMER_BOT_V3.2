@@ -10,9 +10,9 @@ import time
 
 API_ID = os.environ.get("API_ID",12345)
 API_HASH = os.environ.get("API_HASH","")
-STRING = os.environ.get("SESSION_NAME","")
+STRING = os.environ.get("STRING","")
 
-app = Client(SESSION_NAME, API_ID, API_HASH)
+app = Client(STRING, API_ID, API_HASH)
 
 @Client.on_callback_query(filters.regex('cancel'))
 async def cancel(bot,update):
