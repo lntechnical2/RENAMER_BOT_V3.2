@@ -44,7 +44,7 @@ async def doc(bot,update):
      file = message.document
      value = 2099999999
      if value < file.file_size:
-     	app.send_mrssage(-1001750197277, "Hello")
+     	app.send_message(-1001750197277, "Hello")
      	ms = await update.message.edit("``` Trying To Download...```")
      	c_time = time.time()
      	try:
