@@ -27,7 +27,7 @@ if STRING:
 
            plugins=dict(root='plugins'))
 
-        bot.start()
+        bot.run()
 
         app.start()
 
