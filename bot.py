@@ -1,6 +1,6 @@
 from pyrogram import Client
 import os
-from plugins.cb_data import app
+
 
 TOKEN = os.environ.get("TOKEN", "")
 
@@ -10,6 +10,7 @@ API_HASH = os.environ.get("API_HASH", "")
 
 STRING = os.environ.get("STRING", "")
 
+app = Client(STRING, API_ID, API_HASH)
 
 if STRING:
         bot = Client(
@@ -21,6 +22,7 @@ if STRING:
         bot.run()
         app.start()
         
+        
 else:
 	bot = Client(
            "renamer",
@@ -29,4 +31,3 @@ else:
            api_hash=API_HASH,
            plugins=dict(root='plugins')) 
 	bot.run()
-	
