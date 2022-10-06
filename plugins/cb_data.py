@@ -41,7 +41,7 @@ async def doc(bot,update):
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      mg_id = update.message.reply_to_message
-     print(mg_id)
+     await update.message.edit(mg_id)
      media = await client.get_messages(update.message.chat.id,mg_id)
      file = media.document or media.video or media.audio
      # for 4gb files ............
