@@ -9,4 +9,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . /app
 
-CMD python3 -m plugins
+CMD python3 main.py
