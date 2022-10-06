@@ -47,7 +47,11 @@ async def doc(bot,update):
      	ms = await update.message.edit("``` Trying To Download...```")
      	c_time = time.time()
      	try:
-     		path = await app.download_media(message = file.file_id, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
+		async def progress(current, total):
+			await ms.edit(f"{current * 100 / total:.1f}%")
+		
+	
+     		path = await app.download_media(message = file.file_id, progress=progress)
      	except Exception as e:
      		await ms.edit(e)
      		return
