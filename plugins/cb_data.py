@@ -41,7 +41,7 @@ async def doc(bot,update):
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
-     file = meessage.document
+     file = message.document
      value = 2099999999
      if value < file.file_size:
      	ms = await update.message.edit("``` Trying To Download...```")
