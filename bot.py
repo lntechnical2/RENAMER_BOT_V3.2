@@ -1,7 +1,8 @@
-from pyrogram import Client,idle
+from pyrogram import Client
+
 import os
-import asyncio
-from plugins.cb_data import app as Client2
+
+from plugins.cb_data import app
 
 TOKEN = os.environ.get("TOKEN", "")
 
@@ -12,16 +13,35 @@ API_HASH = os.environ.get("API_HASH", "")
 STRING = os.environ.get("STRING", "")
 
 if STRING:
-	async def main():
-	     bots =[Client("mybot",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins')),Client2 ]
-	          
-	     for bot in bots:
-	          await bot.start()
-	     await idle()
-	     for bot in bots:
-	        await bot.stop()
-	asyncio.run(main())
-	
+
+        bot = Client(
+
+           "renamer",
+
+           bot_token=TOKEN,
+
+           api_id=API_ID,
+
+           api_hash=API_HASH,
+
+           plugins=dict(root='plugins'))
+
+        bot.start()
+
+        app.start()
+
+        idle()
+
 else:
-	bot = Client("mybot",bot_token=TOKEN,api_id=API_ID,api_hash=API_HASH,plugins=dict(root='plugins'))
-	bot.run()	        
+
+	bot = Client(           "renamer",
+
+           bot_token=TOKEN,
+
+           api_id=API_ID,
+
+           api_hash=API_HASH,
+
+           plugins=dict(root='plugins')) 
+
+	bot.run()
