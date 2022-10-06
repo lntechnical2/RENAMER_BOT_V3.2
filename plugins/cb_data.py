@@ -12,7 +12,7 @@ API_ID = os.environ.get("API_ID",12345)
 API_HASH = os.environ.get("API_HASH","")
 STRING = os.environ.get("STRING","")
 
-app = Client(STRING, API_ID, API_HASH,in_memory=True)
+app = Client(STRING, API_ID, API_HASH)
 
 @Client.on_callback_query(filters.regex('cancel'))
 async def cancel(bot,update):
