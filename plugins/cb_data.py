@@ -40,17 +40,14 @@ async def doc(bot,update):
      name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
-     mg_id = update.message.reply_to_message
-     await update.message.edit(mg_id)
-     media = await client.get_messages(update.message.chat.id,mg_id)
-     file = media.document or media.video or media.audio
-     # for 4gb files ............
+     message = update.message.reply_to_message
+     file = meessage.document
      value = 2099999999
      if value < file.file_size:
      	ms = await update.message.edit("``` Trying To Download...```")
      	c_time = time.time()
      	try:
-     		path = await app.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
+     		path = await app.download_media(message = file.file_id, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
      	except Exception as e:
      		await ms.edit(e)
      		return
