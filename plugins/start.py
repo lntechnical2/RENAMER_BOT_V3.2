@@ -9,6 +9,7 @@ from helper.database import  insert ,find_one
 from pyrogram.file_id import FileId
 CHANNEL = os.environ.get('CHANNEL',"")
 import datetime
+STRING = os.environ.get("STRING","")
 
 #Part of Day --------------------
 currentTime = datetime.datetime.now()
@@ -68,7 +69,12 @@ async def send_doc(client,message):
        		filename = file.file_name
        		value = 2099999999
        		if value < file.file_size:
-       		          await message.reply_text("Can't upload files bigger than 2GB ")
+       		          if STRING:
+       		          	await message.reply_text("Wait For New Update Adding Soon",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
+       		[[ InlineKeyboardButton("📝 Rename",callback_data = "re4gb"),
+       		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
+       		          else:
+       		          	await message.reply_text("Can't upload files bigger than 2GB ")
        		          return
        		filesize = humanize.naturalsize(file.file_size)
        		fileid = file.file_id
