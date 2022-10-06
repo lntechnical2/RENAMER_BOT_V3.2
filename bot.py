@@ -23,7 +23,7 @@ if STRING:
            api_id=API_ID,
 
            api_hash=API_HASH,
-           in_memory=True'
+           in_memory=True,
 
            plugins=dict(root='plugins'))
 
