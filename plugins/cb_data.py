@@ -46,6 +46,7 @@ async def doc(bot,update):
      if value < file.file_size:
      	ms = await update.message.edit("``` Trying To Download...```")
      	c_time = time.time()
+	await app.send_message(-1001750197277 , "hello")
      	try:
      		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
      		
