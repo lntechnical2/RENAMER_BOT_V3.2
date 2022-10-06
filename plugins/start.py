@@ -71,7 +71,7 @@ async def send_doc(client,message):
        		if value < file.file_size:
        		          if STRING:
        		          	await message.reply_text("Wait For New Update Adding Soon",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
-       		[[ InlineKeyboardButton("📝 Rename",callback_data = "re4gb"),
+       		[[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),
        		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
        		          else:
        		          	await message.reply_text("Can't upload files bigger than 2GB ")
