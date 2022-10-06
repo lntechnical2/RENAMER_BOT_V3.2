@@ -18,9 +18,9 @@ if STRING:
            api_id=API_ID,
            api_hash=API_HASH,
            plugins=dict(root='plugins'))
-        bot.start()
-        app.start()
-        idle()
+        bot.run()
+        app.run()
+        
 else:
 	bot = Client(
            "renamer",
