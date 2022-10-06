@@ -8,6 +8,12 @@ import os
 from PIL import Image
 import time
 
+API_ID = os.environ.get("API_ID",12345)
+API_HASH = os.environ.get("API_HASH","")
+STRING = os.environ.get("SESSION_NAME","")
+
+app = Client(SESSION_NAME, API_ID, API_HASH)
+
 @Client.on_callback_query(filters.regex('cancel'))
 async def cancel(bot,update):
 	try:
@@ -35,6 +41,44 @@ async def doc(bot,update):
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      file = update.message.reply_to_message
+     # for 4gb files ............
+     value = 2099999999
+     if value < file.file_size:
+     	ms = await update.message.edit("``` Trying To Download...```")
+     	c_time = time.time()
+     	try:
+     		path = await app.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
+     	except Exception as e:
+     		await ms.edit(e)
+     		return
+     	splitpath = path.split("/downloads/")
+     	dow_file_name = splitpath[1]
+     	old_file_name =f"downloads/{dow_file_name}"
+     	os.rename(old_file_name,file_path)
+     	user_id = int(update.message.chat.id)
+     	thumb = find(user_id)
+     	if thumb:
+     		ph_path = await bot.download_media(thumb)
+     		Image.open(ph_path).convert("RGB").save(ph_path)
+     		img = Image.open(ph_path)
+     		img.resize((320, 320))
+     		img.save(ph_path, "JPEG")
+     		c_time = time.time()
+     		await ms.edit("```Trying To Upload```")
+     		c_time = time.time()
+     		try:
+     			filw = await app.send_document(-1001750197277,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			print(filw)
+     			
+     			await ms.delete()
+     			os.remove(file_path)
+     			os.remove(ph_path)
+     		except Exception as e:
+     			await ms.edit(e)
+     			os.remove(file_path)
+     			os.remove(ph_path)
+     	else:
+     		print('error')
      ms = await update.message.edit("``` Trying To Download...```")
      c_time = time.time()
      try:
@@ -186,4 +230,4 @@ async def aud(bot,update):
      			os.remove(file_path)
      		except Exception as e:
      			await ms.edit(e)
-     			os.remove(file_path)	
+     			os.remove(file_path)
