@@ -1,4 +1,23 @@
-date.message.delete()
+from helper.progress import progress_for_pyrogram
+from pyrogram import Client, filters
+from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from helper.database import find , dateupdate
+import os
+from PIL import Image
+import time
+
+API_ID = os.environ.get("API_ID",12345)
+API_HASH = os.environ.get("API_HASH","")
+STRING = os.environ.get("STRING","")
+
+app = Client(STRING, API_ID, API_HASH)
+
+@Client.on_callback_query(filters.regex('cancel'))
+async def cancel(bot,update):
+	try:
+		await update.message.delete()
 	except:
 		return
 @Client.on_callback_query(filters.regex('rename'))
@@ -32,7 +51,7 @@ async def doc(bot,update):
      			await ms.edit(f"{current * 100 / total:.1f}%")
 		
 	
-     		path = await app.download_media(message = file, progress=progress)
+     		path = await app.download_media(message = file.file_id, progress=progress)
      	except Exception as e:
      		await ms.edit(e)
      		return
