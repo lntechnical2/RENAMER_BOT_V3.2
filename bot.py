@@ -17,7 +17,7 @@ if STRING:
            bot_token=TOKEN,
            api_id=API_ID,
            api_hash=API_HASH,
-           plugins=plugins)
+           plugins=dict(root='plugins'))
         bot.start()
         app.start()
         idle()
@@ -27,6 +27,6 @@ else:
            bot_token=TOKEN,
            api_id=API_ID,
            api_hash=API_HASH,
-           plugins=plugins) 
+           plugins=dict(root='plugins')) 
 	bot.run()
 	
