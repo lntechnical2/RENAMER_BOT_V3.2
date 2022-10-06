@@ -47,11 +47,8 @@ async def doc(bot,update):
      	ms = await update.message.edit("``` Trying To Download...```")
      	c_time = time.time()
      	try:
-     		async def progress(current, total):
-     			await ms.edit(f"{current * 100 / total:.1f}%")
-		
-	
-     		path = await app.download_media(message = file.file_id, progress=progress)
+     		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
+     		
      	except Exception as e:
      		await ms.edit(e)
      		return
@@ -71,7 +68,7 @@ async def doc(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await app.send_document(-1001750197277,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			filw = await app.send_document(-1001750197277,document = file_path,thumb=ph_path,caption = f"**{new_filename}**")
      			print(filw)
      			
      			await ms.delete()
