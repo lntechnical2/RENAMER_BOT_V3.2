@@ -27,15 +27,12 @@ bot = Client(
            
 
 if STRING:
-    async def main():
-        apps = [Client2,bot]
-        
-        for app in apps:
-            await app.start()
-        await idle()
-        for app in apps:
-            await app.stop()
-    asyncio.run(main())
+    apps = [app,bot]
+    for app in apps:
+        app.start()
+    idle()
+    for app in apps:
+        app.stop()
     
 else:
     bot.run()
