@@ -32,4 +32,5 @@ async def main():
         
     else:
         await bot.start()
+        await bot.stop()
 asyncio.run(main())
