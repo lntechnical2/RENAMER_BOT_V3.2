@@ -1,4 +1,3 @@
-
 from helper.progress import progress_for_pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
@@ -8,6 +7,8 @@ from helper.database import find , dateupdate
 import os
 from PIL import Image
 import time
+
+log_channel = -1001750197277
 
 API_ID = int(os.environ.get("API_ID", ""))
 
@@ -71,7 +72,8 @@ async def doc(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await app.send_document('rename_urbot',document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			filw = await app.send_document(log_channel,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await bot.forward_message(update.message.chat.id,log_channel,filw.id)
      			
      			
      			
@@ -87,7 +89,8 @@ async def doc(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await app.send_document('rename_urbot',document = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			filw = await app.send_document(log_channel,document = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await bot.forward_message(update.message.chat.id,log_channel,filw.id)
      			
      			await ms.delete()
      			os.remove(file_path)
@@ -175,7 +178,8 @@ async def vid(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await app.send_video('rename_urbot',video= file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			filw = await app.send_video(log_channel,video= file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await bot.forward_message(update.message.chat.id,log_channel,filw.id)
      			await ms.delete()
      			os.remove(file_path)
      			os.remove(ph_path)
@@ -188,7 +192,8 @@ async def vid(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await app.send_video('rename_urbot',video = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			filw = await app.send_video(log_channel,video = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await bot.forward_message(update.message.chat.id,log_channel,filw.id)
      			
      			await ms.delete()
      			os.remove(file_path)
