@@ -1,4 +1,3 @@
-#
 from helper.progress import progress_for_pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
@@ -72,7 +71,7 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(-1001750197277,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await ms.edit(f"File ;;{filw}")
+     			await filw.copy(update.message.chat.id)
      			
      			await ms.delete()
      			os.remove(file_path)
@@ -87,6 +86,7 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(-1001750197277,document = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await filw.copy(update.message.chat.id)
      			
      			await ms.delete()
      			os.remove(file_path)
@@ -175,8 +175,9 @@ async def vid(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			filw = await bot.send_video(update.message.chat.id,video = file_path,caption = f"**{new_filename}**",thumb=ph_path,duration =duration, progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await ms.delete()
+     			await bot.send_video(update.message.chat.id,video = file_path,caption = f"**{new_filename}**",thumb=ph_path,duration =duration, progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+     			await ms.edit()
+     			#await ms.delete()
      			os.remove(file_path)
      			os.remove(ph_path)   				
      		except Exception as e:
