@@ -28,7 +28,7 @@ if STRING:
 
         bot.run()
 
-        app.start()
+        app.run()
 
         idle()
 
