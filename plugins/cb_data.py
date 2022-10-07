@@ -190,7 +190,7 @@ async def vid(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_video(update.message.chat.id,video = file_path,caption = f"**{new_filename}**",duration = duration, progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.send_video(update.message.chat.id,filw.document.file_id)
+     			await bot.send_video(update.message.chat.id,filw.video.file_id)
      			os.remove(file_path)
      		except Exception as e:
      			await ms.edit(e)
