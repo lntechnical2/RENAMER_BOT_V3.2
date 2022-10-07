@@ -2,8 +2,6 @@ import asyncio
 from pyrogram import Client, compose
 import os
 
-from plugins.cb_data import app
-
 TOKEN = os.environ.get("TOKEN", "")
 
 API_ID = int(os.environ.get("API_ID", ""))
@@ -12,6 +10,7 @@ API_HASH = os.environ.get("API_HASH", "")
 
 STRING = os.environ.get("STRING", "")
 
+app = Client(STRING,in_memory=True, API_ID, API_HASH)
 
 bot = Client(
 
