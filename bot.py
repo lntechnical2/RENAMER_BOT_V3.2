@@ -30,7 +30,7 @@ if STRING:
     async def main():
         apps = [app,bot]
         await compose(apps)
-    asyncio.start(main())
+    asyncio.run(main())
     
 else:
     bot.run()
