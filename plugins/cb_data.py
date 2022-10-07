@@ -14,7 +14,7 @@ API_HASH = os.environ.get("API_HASH", "")
 
 STRING = os.environ.get("STRING", "")
 
-app = Client(STRING,API_ID, API_HASH,in_memory = True)
+app = Client("test", api_id=API_ID, api_hash=API_HASH, session_string=STRING)
 
 @Client.on_callback_query(filters.regex('cancel'))
 async def cancel(bot,update):
