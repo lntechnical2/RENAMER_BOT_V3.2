@@ -25,12 +25,12 @@ bot = Client(
 
            plugins=dict(root='plugins'))
 
-async def main():
-    if STRING:
-        apps = [app,bot]
-        await compose(apps)
-        
-    else:
-        await bot.start()
-        await bot.stop()
-asyncio.run(main())
+
+if STRING:
+    bot.start()
+    app.start()
+    idle()
+    app.stop()
+
+else:
+    bot.run()
