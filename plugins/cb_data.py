@@ -74,7 +74,7 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(log_channel,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.from_user.id,log_channel,filw.id)
+     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
      			
      			
      			
@@ -92,7 +92,7 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(log_channel,document = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.from_user.id,log_channel,filw.id)
+     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
      			
      			await ms.delete()
      			os.remove(file_path)
@@ -240,7 +240,7 @@ async def vid(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_video(log_channel,video = file_path,caption = f"**{new_filename}**",thumb=ph_path,duration =duration, progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.message.chat.id,log_channel,filw.id)
+     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
      			
      			await ms.delete()
      			os.remove(file_path)
