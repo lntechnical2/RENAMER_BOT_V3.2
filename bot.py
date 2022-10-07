@@ -1,5 +1,5 @@
 import asyncio
-from pyrogram import Client, compose
+from pyrogram import Client, compose,idle
 import os
 
 from plugins.cb_data import app
@@ -29,7 +29,12 @@ bot = Client(
 if STRING:
     async def main():
         apps = [app,bot]
-        await compose(apps)
+        
+        for app in apps:
+            await app.start()
+        await idle()
+        for app in apps:
+            await app.stop()
     asyncio.run(main())
     
 else:
