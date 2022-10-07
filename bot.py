@@ -16,7 +16,7 @@ if STRING:
 
         bot = Client(
 
-           ":memory:",
+           "Renamer",
 
            bot_token=TOKEN,
 
@@ -34,7 +34,7 @@ if STRING:
 
 else:
 
-	bot = Client( ":memory:",
+	bot = Client( "Renamer",
 
            bot_token=TOKEN,
 
