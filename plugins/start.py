@@ -70,9 +70,7 @@ async def send_doc(client,message):
        		value = 2099999999
        		if value < file.file_size:
        		          if STRING:
-       		          	await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid}""",
-
-       		reply_to_message_id = message.id,,reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
+       		          	await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,,reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
        		[[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),
        		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
        		          else:
