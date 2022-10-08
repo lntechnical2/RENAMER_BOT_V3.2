@@ -75,7 +75,10 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(log_channel,document = file_path,thumb=ph_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
+     			from_chat = filw.chat.id
+     			mg_id = filw.id
+     			time.sleep(2)
+     			await bot.copy_message(update.from_user.id,from_chat,mg_id)
      			    			
      			await ms.delete()
      			os.remove(file_path)
@@ -91,7 +94,10 @@ async def doc(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_document(log_channel,document = file_path,caption = f"**{new_filename}**",progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.message.from_user.id,filw.chat.id,filw.id)
+     			from_chat = filw.chat.id
+     			mg_id = filw.id
+     			time.sleep(2)
+     			await bot.copy_message(update.message.from_user.id,from_chat,mg_id)
      			
      			await ms.delete()
      			os.remove(file_path)
@@ -187,7 +193,10 @@ async def vid(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_video(log_channel,video= file_path,thumb=ph_path,caption = f"**{new_filename}**",duration =duration,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
+     			from_chat = filw.chat.id
+     			mg_id = filw.id
+     			time.sleep(2)
+     			await bot.copy_message(update.from_user.id,from_chat,mg_id)
      			await ms.delete()
      			os.remove(file_path)
      			os.remove(ph_path)
@@ -202,11 +211,13 @@ async def vid(bot,update):
      		c_time = time.time()
      		try:
      			filw = await app.send_video(log_channel,video = file_path,caption = f"**{new_filename}**",duration = duration,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
-     			await bot.copy_message(update.from_user.id,filw.chat.id,filw.id)
+     			from_chat = filw.chat.id
+     			mg_id = filw.id
+     			time.sleep(2)
+     			await bot.copy_message(update.from_user.chat.id,from_chat,mg_id)
      			
      			await ms.delete()
      			os.remove(file_path)
-     			os.remove(ph_path)
      		except Exception as e:
      			await ms.edit(e)
      			os.remove(file_path)
