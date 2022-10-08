@@ -79,7 +79,7 @@ async def doc(bot,update):
      			os.remove(file_path)
      			os.remove(ph_path)
      		except Exception as e:
-     			await ms.edit(e)
+     			await ms.edit(f"{e}or check file here https://t.me/file_storebotn")
      			os.remove(file_path)
      			os.remove(ph_path)
      			return
@@ -95,7 +95,7 @@ async def doc(bot,update):
      			os.remove(file_path)
      			os.remove(ph_path)
      		except Exception as e:
-     			await ms.edit(e)
+     			await ms.edit(f"{e}or check file here https://t.me/file_storebotn")
      			os.remove(file_path)
      			return
      		
@@ -191,7 +191,7 @@ async def vid(bot,update):
      			os.remove(file_path)
      			os.remove(ph_path)
      		except Exception as e:
-     			await ms.edit(e)
+     			await ms.edit(f"{e}or check file here https://t.me/file_storebotn")
      			os.remove(file_path)
      			os.remove(ph_path)
      			return
@@ -207,7 +207,7 @@ async def vid(bot,update):
      			os.remove(file_path)
      			os.remove(ph_path)
      		except Exception as e:
-     			await ms.edit(e)
+     			await ms.edit(f"{e}or check file here https://t.me/file_storebotn")
      			os.remove(file_path)
      			return
      			
