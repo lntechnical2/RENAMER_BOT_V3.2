@@ -214,7 +214,7 @@ async def vid(bot,update):
      			from_chat = filw.chat.id
      			mg_id = filw.id
      			time.sleep(2)
-     			await bot.copy_message(update.from_user.chat.id,from_chat,mg_id)
+     			await bot.copy_message(update.from_user.id,from_chat,mg_id)
      			
      			await ms.delete()
      			os.remove(file_path)
