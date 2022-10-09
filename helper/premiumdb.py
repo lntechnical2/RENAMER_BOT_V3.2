@@ -8,8 +8,8 @@ db = mongo[DB_NAME]
 dbcol = db["user"]
 
 def add_premium(chat_id):
-	user_id = int(chat_id)
-	user_data = {"_id":user_id, "date":0}
+	user_id = int(chat_id,date)
+	user_data = {"_id":user_id, "date":date}
 	try:
 		dbcil.insert_one(user_data)
 	except:
