@@ -8,7 +8,7 @@ import os
 from PIL import Image
 import time
 
-LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
+log_channel = int(os.environ.get("LOG_CHANNEL", ""))
 
 API_ID = int(os.environ.get("API_ID", ""))
 
