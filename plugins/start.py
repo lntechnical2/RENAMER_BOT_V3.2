@@ -76,13 +76,13 @@ async def send_doc(client,message):
        		          		_used_date = findpr(user_id)
        		          		buy_date = _used_date["date"]
        		          		pre_check = check_expi(buy_date)
-       		          		if pre_chreck == True:
+       		          		if pre_check == True:
        		          			await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {humanize.naturalsize(file.file_size)}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
        		          		else:
        		          			await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		          			
        		          	except Exception as e:
-       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\n Send Screnshot To @mrlokaman\n{e}\n",quote=True)
+       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
        		          		return
        		          	
        		          	
