@@ -12,7 +12,7 @@ def add_premium(chat_id):
 	user_id = int(chat_id)
 	user_data = {"_id":user_id, "date":date[0]}
 	try:
-		dbcil.insert_one(user_data)
+		dbcol.insert_one(user_data)
 	except:
 		print("error")
 		pass
