@@ -53,16 +53,21 @@ async def send_doc(client,message):
        		[ [ InlineKeyboardButton("Support 🇮🇳" ,url=f"https://t.me/{update_channel}") ]   ]))
        		return
        
+       premi_check  = findpr(user_id)
        
        _used_date = find_one(user_id)
        used_date = _used_date["date"]
        c_time = time.time()
-       LIMIT = 240
+       if premi_check:
+           LIMIT = 0
+       else:
+           LIMIT = 350
        then = used_date+ LIMIT
        left = round(then - c_time)
        conversion = datetime.timedelta(seconds=left)
        ltime = str(conversion)
        if left > 0:
+       	    
        	await message.reply_text(f"```Sorry Dude I am not only for YOU \n Flood control is active so please wait for {ltime}```",reply_to_message_id = message.id)
        else:
        		media = await client.get_messages(message.chat.id,message.id)
@@ -82,7 +87,7 @@ async def send_doc(client,message):
        		          			await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		          			
        		          	except Exception as e:
-       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
+       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR For 26days\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
        		          		return
        		          	
        		          	
