@@ -8,7 +8,7 @@ from helper.database import  insert ,find_one
 from pyrogram.file_id import FileId
 
 from helper.premiumdb import find_one as findpr
-from helper.date ,add_date ,check_expi
+from helper.date import add_date ,check_expi
 CHANNEL = os.environ.get('CHANNEL',"")
 import datetime
 STRING = os.environ.get("STRING","")
