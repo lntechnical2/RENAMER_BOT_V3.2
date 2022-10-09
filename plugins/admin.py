@@ -1,3 +1,4 @@
+import os
 from pyrogram import Client, filters
 from helper.premiumdb import add_premium 
 from helper.date import add_date
