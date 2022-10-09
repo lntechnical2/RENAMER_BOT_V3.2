@@ -9,7 +9,7 @@ dbcol = db["user"]
 
 def add_premium(chat_id):
 	date = add_date()
-	user_id = int(chat_id,date)
+	user_id = int(chat_id)
 	user_data = {"_id":user_id, "date":date[0]}
 	try:
 		dbcil.insert_one(user_data)
