@@ -79,10 +79,10 @@ async def send_doc(client,message):
        		          		if pre_chreck == True:
        		          			await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {humanize.naturalsize(file.file_size)}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
        		          		else:
-       		          			await message.reply_text(f'Your Plane Expired On {buy_date}')
+       		          			await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		          			
        		          	except:
-       		          		await message.reply_text("You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\n Send Screnshot To @mrlokaman ")
+       		          		await message.reply_text("You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\n Send Screnshot To @mrlokaman ",quote=True)
        		          		return
        		          	
        		          	
