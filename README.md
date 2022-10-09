@@ -1,8 +1,6 @@
 # RENAMER_BOT_V3
 Telegram renamer bot
 
-
-
 ## Join Railway
 
 <a href="https://railway.app?referralCode=RFr_Ev">Join To Railway</a>
@@ -22,6 +20,11 @@ Telegram renamer bot
 * DB_NAME  - Your database name from mongoDB. Default will be 'my'
 
 * CHANNEL        - Channel user Name without @
+
+* STRING -  ```optinal``` Session String Use @genStr_Bot For Premium Users To Upload 4GB File
+
+* LOG_CHANNEL - Channel Id Nedd Store 4GB Files Get Your channel id from Rose @MarieNews 
+
 
 # Tutorial Video 
 
