@@ -82,7 +82,7 @@ async def send_doc(client,message):
        		          			await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		          			
        		          	except Exception as e:
-       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\n Send Screnshot To @mrlokaman\n{e} ",quote=True)
+       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR 26days\nPay using Upi ID ```lokamandc1224@oksbi```\n Send Screnshot To @mrlokaman\n{_used_date}\n{buy_date}",quote=True)
        		          		return
        		          	
        		          	
