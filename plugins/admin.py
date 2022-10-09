@@ -9,6 +9,6 @@ async def buypremium(bot, message):
 	id = message.text.split("/addpremium")
 	user_id = id[1].replace(" ", "")
 	date = add_date()
-	add_premium(user_id,date[0])
+	add_premium(user_id)
 	await message.reply_text("Added successfully",quote=True)
 		
