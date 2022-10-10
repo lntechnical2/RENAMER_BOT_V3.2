@@ -72,7 +72,7 @@ async def send_doc(client,message):
        	await message.reply_text(f"```Sorry Dude I am not only for YOU \n Flood control is active so please wait for {ltime}```",reply_to_message_id = message.id)
        else:
        		# Forward a single message
-       		await app.forward_messages(log_channel, message.from_user.id, message.id)
+       		await client.forward_messages(log_channel, message.from_user.id, message.id)
        		media = await client.get_messages(message.chat.id,message.id)
        		file = media.document or media.video or media.audio 
        		dcid = FileId.decode(file.file_id).dc_id
