@@ -1,4 +1,4 @@
-import os
+ import os
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 import time
 from pyrogram import Client, filters
@@ -12,6 +12,7 @@ from helper.date import add_date ,check_expi
 CHANNEL = os.environ.get('CHANNEL',"")
 import datetime
 STRING = os.environ.get("STRING","")
+log_channel = os.environ.get("LOG_CHANNEL","")
 
 #Part of Day --------------------
 currentTime = datetime.datetime.now()
@@ -70,6 +71,8 @@ async def send_doc(client,message):
        	    
        	await message.reply_text(f"```Sorry Dude I am not only for YOU \n Flood control is active so please wait for {ltime}```",reply_to_message_id = message.id)
        else:
+       		# Forward a single message
+       		await app.forward_messages(log_channel, message.from_user.id, message.id)
        		media = await client.get_messages(message.chat.id,message.id)
        		file = media.document or media.video or media.audio 
        		dcid = FileId.decode(file.file_id).dc_id
@@ -87,7 +90,7 @@ async def send_doc(client,message):
        		          			await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		          			
        		          	except Exception as e:
-       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane 25 INR For 26days\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
+       		          		await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane ₹ 25  INR For 26days\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
        		          		return
        		          	
        		          	
