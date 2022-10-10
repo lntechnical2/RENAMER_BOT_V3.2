@@ -44,7 +44,11 @@ async def rename(bot,update):
 async def doc(bot,update):
      new_name = update.message.text
      name = new_name.split(":-")
-     new_filename = name[1]
+     new_file = name[1]
+     v = new_file.split(".")
+     va = f".{v[-1]}"
+     newfile= value.replace(va, '')
+     new_filename = newfile + va
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
      file = message.document or message.video or message.audio
@@ -158,6 +162,10 @@ async def vid(bot,update):
      new_name = update.message.text
      name = new_name.split(":-")
      new_filename = name[1]
+     v = new_file.split(".")
+     va = f".{v[-1]}"
+     newfile= value.replace(va, '')
+     new_filename = newfile + va
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
      file = message.document or message.video or message.audio
@@ -279,6 +287,10 @@ async def aud(bot,update):
      new_name = update.message.text
      name = new_name.split(":-")
      new_filename = name[1]
+     v = new_file.split(".")
+     va = f".{v[-1]}"
+     newfile= value.replace(va, '')
+     new_filename = newfile + va
      file_path = f"downloads/{new_filename}"
      file = update.message.reply_to_message
      ms = await update.message.edit("``` Trying To Download...```")
