@@ -4,6 +4,8 @@ import time
 from pyrogram import Client, filters
 from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 import humanize
+from helper.progress import humanbytes
+
 from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata
 from pyrogram.file_id import FileId
 
@@ -61,10 +63,10 @@ async def send_doc(client,message):
            
        c_time = time.time()
        
-       if buy_date:
-           LIMIT = 50
-       else:
+       if buy_date==None:
            LIMIT = 350
+       else:
+           LIMIT = 50
        then = used_date+ LIMIT
        left = round(then - c_time)
        conversion = datetime.timedelta(seconds=left)
@@ -80,10 +82,17 @@ async def send_doc(client,message):
        		dcid = FileId.decode(file.file_id).dc_id
        		filename = file.file_name
        		value = 2147483648
+       		used_ = find_one(message.from_user.id)
+       		used = used_["used_limit"]
+       		limit = used_["uploadlimit"]
+       		remain = limit- used
+       		if remain < int(file.file_size):
+       		    await message.reply_text(f" You Can't Upload More Then {humanbytes(limit)} Used Daly Limit {humanbytes(used)} ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
+       		    return
        		if value < file.file_size:
        		    if STRING:
        		        if buy_date==None:
-       		            await message.reply_text(f"You Can't Rename More Then 2GB file\nBuy Subscription\nOur plane\n* Paid Plane ₹ 55  INR For 30days\nPay Using Paytm https://p.paytm.me/xCTH/los89jy0\nPay using Upi ID ```lokamandc1224@oksbi```\nSend Screnshot To @mrlokaman",quote=True)
+       		            await message.reply_text(f" You Can't Upload More Then {humanbytes(limit)} Used Daly Limit {humanbytes(used)} ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
        		            return
        		        pre_check = check_expi(buy_date)
        		        if pre_check == True:
