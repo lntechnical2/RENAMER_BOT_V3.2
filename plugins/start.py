@@ -1,4 +1,4 @@
-import os
+     import os
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 import time
 from pyrogram import Client, filters
@@ -58,8 +58,13 @@ async def send_doc(client,message):
        
        
        user_deta = find_one(user_id)
-       used_date = user_deta["date"]
-       buy_date= user_deta["prexdate"]
+       try:
+       	used_date = user_deta["date"]
+       	buy_date= user_deta["prexdate"]
+       except:
+           insert(int(user_id))
+           pass       
+           
            
        c_time = time.time()
        
@@ -107,4 +112,4 @@ async def send_doc(client,message):
        		    fileid = file.file_id
        		    await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
        		[[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),
-       		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
+       		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]])) 
