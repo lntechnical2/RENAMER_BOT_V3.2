@@ -1,6 +1,6 @@
 import pymongo 
 import os
-from helper.date import add_date
+from function.date import add_date
 DB_NAME = os.environ.get("DB_NAME","")
 DB_URL = os.environ.get("DB_NAME","")
 mongo = pymongo.MongoClient(DB_URL)
@@ -36,6 +36,10 @@ def uploadlimit(chat_id,limit):
 def addpre(chat_id):
     date = add_date()
     dbcol.update_one({"_id":chat_id},{"$set":{"prexdate":date[0]}})
+
+def addpredata(chat_id):
+    dbcol.update_one({"_id":chat_id},{"$set":{"prexdate":None}})
+    
     
 def find(chat_id):
 	id =  {"_id":chat_id}
