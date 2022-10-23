@@ -9,7 +9,7 @@ dbcol = db["user"]
 
 def insert(chat_id):
             user_id = int(chat_id)
-            user_det = {"_id":user_id,"file_id":None , "date":0 , "uploadlimit" :2147483648,"used_limit":0,"usertype":"Free","prexdate" : None}
+            user_det = {"_id":user_id,"file_id":None , "date":0 , "uploadlimit" :2147483648,"used_limit":0,"usertype":"Free","prexdate" : None,"daily"=0}
             try:
             	dbcol.insert_one(user_det)
             except:
