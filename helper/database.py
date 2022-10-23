@@ -1,6 +1,6 @@
 import pymongo 
 import os
-from function.date import add_date
+from helper.date import add_date
 DB_NAME = os.environ.get("DB_NAME","")
 DB_URL = os.environ.get("DB_NAME","")
 mongo = pymongo.MongoClient(DB_URL)
