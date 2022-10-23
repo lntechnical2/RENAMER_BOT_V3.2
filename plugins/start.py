@@ -6,9 +6,9 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from helper.progress import humanbytes
 
-from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata,daily
+from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata
 from pyrogram.file_id import FileId
-
+from helper.database import daily ad daily
 from helper.premiumdb import find_one as findpr
 from helper.date import add_date ,check_expi
 CHANNEL = os.environ.get('CHANNEL',"")
@@ -97,7 +97,7 @@ async def send_doc(client,message):
        			today = date_.today()
        			pattern = '%Y-%m-%d'
        			epcho = int(time.mktime(time.strptime(str(today), pattern)))
-       			daily(message.from_user.id,epcho)       			     		
+       			daily_(message.from_user.id,epcho)       			     		
        		remain = limit- used
        		if remain < int(file.file_size):
        		    await message.reply_text(f" You Can't Upload More Then {humanbytes(limit)} Used Daly Limit {humanbytes(used)} ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
