@@ -15,10 +15,10 @@ async def start(client,message):
 	remain = int(limit)- int(used)
 	user =  used_["usertype"]
 	ends = used_["prexdate"]
-	normal_date = datetime.fromtimestamp(ends).strftime('%Y-%m-%d')
-	if ends ==0:
+	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
+	    normal_date = datetime.fromtimestamp(ends).strftime('%Y-%m-%d')
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}\n\n```Your Plan Ends On :- {normal_date}"
 	    
 	if user == "Free":
