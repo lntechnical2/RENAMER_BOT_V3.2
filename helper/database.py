@@ -40,7 +40,10 @@ def addpre(chat_id):
 def addpredata(chat_id):
     dbcol.update_one({"_id":chat_id},{"$set":{"prexdate":None}})
     
-    
+  
+def daily(chat_id,date):
+	  dbcol.update_one({"_id":chat_id},{"$set":{"daily":date}})
+	  
 def find(chat_id):
 	id =  {"_id":chat_id}
 	x = dbcol.find(id)
