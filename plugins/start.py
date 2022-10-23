@@ -8,7 +8,7 @@ from helper.progress import humanbytes
 
 from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata
 from pyrogram.file_id import FileId
-from helper.database import daily ad daily
+from helper.database import daily as daily_
 from helper.premiumdb import find_one as findpr
 from helper.date import add_date ,check_expi
 CHANNEL = os.environ.get('CHANNEL',"")
