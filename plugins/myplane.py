@@ -24,5 +24,5 @@ async def start(client,message):
 	if user == "Free":
 	    await message.reply(text,quote = True,reply_markup = InlineKeyboardMarkup([[       			InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade"), InlineKeyboardButton("Cancel ✖️ ",callback_data = "cancel") ]]))
 	else:
-	    await message.reply(text,quote)
+	    await message.reply(text,quote=True)
 	    
