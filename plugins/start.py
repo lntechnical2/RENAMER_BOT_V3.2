@@ -6,13 +6,14 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from helper.progress import humanbytes
 
-from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata
+from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata,daily
 from pyrogram.file_id import FileId
 
 from helper.premiumdb import find_one as findpr
 from helper.date import add_date ,check_expi
 CHANNEL = os.environ.get('CHANNEL',"")
 import datetime
+from datetime import date as date_
 STRING = os.environ.get("STRING","")
 log_channel = int(os.environ.get("LOG_CHANNEL",""))
 
@@ -61,6 +62,7 @@ async def send_doc(client,message):
        try:
        	used_date = user_deta["date"]
        	buy_date= user_deta["prexdate"]
+       	daily = user_deta["daily"]
        except:
            await message.reply_text("database has been Cleared click on /start")
            return
@@ -90,6 +92,12 @@ async def send_doc(client,message):
        		used_ = find_one(message.from_user.id)
        		used = used_["used_limit"]
        		limit = used_["uploadlimit"]
+       		expi = daily - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))
+       		if expi != 0:
+       			today = date_.today()
+       			pattern = '%Y-%m-%d'
+       			epcho = int(time.mktime(time.strptime(str(today), pattern)))
+       			daily(message.from_user.id,epcho)       			     		
        		remain = limit- used
        		if remain < int(file.file_size):
        		    await message.reply_text(f" You Can't Upload More Then {humanbytes(limit)} Used Daly Limit {humanbytes(used)} ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
