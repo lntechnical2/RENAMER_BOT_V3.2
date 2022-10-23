@@ -58,7 +58,7 @@ async def doc(bot,update):
      ms = await update.message.edit("``` Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
-     total_used = used + int(file_size)
+     total_used = used + int(file.file_size)
      used_limit(update.from_user.id,total_used)
      try:
      		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
@@ -138,7 +138,7 @@ async def vid(bot,update):
      ms = await update.message.edit("``` Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
-     total_used = used + int(file_size)
+     total_used = used + int(file.file_size)
      used_limit(update.from_user.id,total_used)
      try:
      		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
@@ -219,7 +219,7 @@ async def aud(bot,update):
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      file = update.message.reply_to_message
-     total_used = used + int(file_size)
+     total_used = used + int(file.file_size)
      used_limit(update.from_user.id,total_used)
      ms = await update.message.edit("``` Trying To Download...```")
      c_time = time.time()
