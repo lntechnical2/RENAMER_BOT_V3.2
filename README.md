@@ -16,7 +16,7 @@ Supports 4GB Files
 
 * ADMIN         - Your User ID 
 
-* DB_URI  - Mongo Database URL from https://cloud.mongodb.com/
+* DB_URL  - Mongo Database URL from https://cloud.mongodb.com/
 
 * DB_NAME  - ```optional``` Your database name from mongoDB. Default will be 'my'
 
