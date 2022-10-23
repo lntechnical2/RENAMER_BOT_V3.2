@@ -57,15 +57,7 @@ async def send_doc(client,message):
        
        user_deta = find_one(user_id)
        used_date = user_deta["date"]
-       try:
-           buy_date= user_deta["prexdate"]
-       except:
-           used_limit(user_id,0)
-           usertype(user_id,"Free")
-           uploadlimit(user_id,2147483648)
-           addpredata(user_id)        
-           await message.reply_text("Re Try .......... ")
-           return
+       buy_date= user_deta["prexdate"]
            
        c_time = time.time()
        
