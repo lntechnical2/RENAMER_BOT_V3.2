@@ -3,5 +3,5 @@ humanize
 hachoir
 pyrogram==2.0.57
 TgCrypto
-pymongo==4.2.0b0
+pymongo==4.0.2
 dnspython
