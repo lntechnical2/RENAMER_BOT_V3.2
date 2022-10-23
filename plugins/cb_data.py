@@ -49,8 +49,7 @@ async def doc(bot,update):
      new_name = update.message.text
      used_ = find_one(update.from_user.id)
      used = used_["used_limit"]
-     date = used_["date"]
-     expi = date - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))	
+     date = used_["date"]	
      name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
@@ -59,15 +58,8 @@ async def doc(bot,update):
      ms = await update.message.edit("``` Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
-     if expi == 0:
-         total_used = used + int(file_size)
-         used_limit(update.from_user.id,total_used)
-     else:
-         today = date_.today()
-         pattern = '%Y-%m-%d'
-         epcho = int(time.mktime(time.strptime(str(today), pattern)))
-         dateupdate(update.from_user.id,epcho)
-         used_limit(update.from_user.id,int(file.file_size))
+     total_used = used + int(file_size)
+     used_limit(update.from_user.id,total_used)
      try:
      		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
      		
@@ -139,8 +131,6 @@ async def vid(bot,update):
      used_ = find_one(update.from_user.id)
      used = used_["used_limit"]
      date = used_["date"]
-     expi = date - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))	
-     name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
@@ -148,15 +138,8 @@ async def vid(bot,update):
      ms = await update.message.edit("``` Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
-     if expi == 0:
-         total_used = used + int(file_size)
-         used_limit(update.from_user.id,total_used)
-     else:
-         today = date_.today()
-         pattern = '%Y-%m-%d'
-         epcho = int(time.mktime(time.strptime(str(today), pattern)))
-         dateupdate(update.from_user.id,epcho)
-         used_limit(update.from_user.id,int(file.file_size))
+     total_used = used + int(file_size)
+     used_limit(update.from_user.id,total_used)
      try:
      		path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
      		
@@ -230,15 +213,21 @@ async def vid(bot,update):
 @Client.on_callback_query(filters.regex("aud"))
 async def aud(bot,update):
      new_name = update.message.text
+     used_ = find_one(update.from_user.id)
+     used = used_["used_limit"]
      name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      file = update.message.reply_to_message
+     total_used = used + int(file_size)
+     used_limit(update.from_user.id,total_used)
      ms = await update.message.edit("``` Trying To Download...```")
      c_time = time.time()
      try:
      	path = await bot.download_media(message = file , progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
      except Exception as e:
+     	neg_used = used - int(file.file_size)
+     	used_limit(update.from_user.id,neg_used)
      	await ms.edit(e)
      	return
      splitpath = path.split("/downloads/")
@@ -265,6 +254,8 @@ async def aud(bot,update):
      			os.remove(file_path)
      			os.remove(ph_path)
      		except Exception as e:
+     			neg_used = used - int(file.file_size)
+     			used_limit(update.from_user.id,neg_used)
      			await ms.edit(e)
      			os.remove(file_path)
      			os.remove(ph_path)
@@ -277,4 +268,6 @@ async def aud(bot,update):
      			os.remove(file_path)
      		except Exception as e:
      			await ms.edit(e)
+     			neg_used = used - int(file.file_size)
+     			used_limit(update.from_user.id,neg_used)
      			os.remove(file_path)
