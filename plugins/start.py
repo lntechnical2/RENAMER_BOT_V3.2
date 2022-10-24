@@ -97,7 +97,8 @@ async def send_doc(client,message):
        			today = date_.today()
        			pattern = '%Y-%m-%d'
        			epcho = int(time.mktime(time.strptime(str(today), pattern)))
-       			daily_(message.from_user.id,epcho)       			     		
+       			daily_(message.from_user.id,epcho)
+       			used_limit(message.from_user.id,0)			     		
        		remain = limit- used
        		if remain < int(file.file_size):
        		    await message.reply_text(f" You Can't Upload More Then {humanbytes(limit)} Used Daly Limit {humanbytes(used)} ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
