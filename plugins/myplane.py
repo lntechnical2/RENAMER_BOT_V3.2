@@ -2,7 +2,7 @@ import time
 from pyrogram import Client, filters
 from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 from helper.database import  find_one,used_limit 
-from helper.database import daily_ 
+from helper.database import daily as daily_ 
 import datetime
 from datetime import timedelta, date ,datetime
 from datetime import date as date_
