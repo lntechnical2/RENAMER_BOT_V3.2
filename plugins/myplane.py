@@ -4,6 +4,7 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 from helper.database import  find_one 
 import datetime
 from datetime import timedelta, date ,datetime
+from datetime import date as date_
 from helper.progress import humanbytes
 
 
@@ -15,6 +16,13 @@ async def start(client,message):
 	remain = int(limit)- int(used)
 	user =  used_["usertype"]
 	ends = used_["prexdate"]
+	daily = used_["daily"]
+	expi = daily - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))
+	if expi != 0:
+	     today = date_.today()
+	     pattern = '%Y-%m-%d'
+	     epcho = int(time.mktime(time.strptime(str(today), pattern)))
+	     daily_(message.from_user.id,epcho)
 	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
