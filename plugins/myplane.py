@@ -1,8 +1,8 @@
 import time
 from pyrogram import Client, filters
 from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
-from helper.database import  find_one 
-from helper.database import daily as daily_
+from helper.database import  find_one,used_limit 
+from helper.database import daily_ 
 import datetime
 from datetime import timedelta, date ,datetime
 from datetime import date as date_
@@ -24,6 +24,7 @@ async def start(client,message):
 	     pattern = '%Y-%m-%d'
 	     epcho = int(time.mktime(time.strptime(str(today), pattern)))
 	     daily_(message.from_user.id,epcho)
+	     used_limit(message.from_user.id,0)
 	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
