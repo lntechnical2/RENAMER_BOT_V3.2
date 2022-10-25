@@ -31,6 +31,7 @@ else:
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client,message):
 	old = insert(int(message.chat.id))
+        print(message.text)
 	try:
 	    id = message.text.split(' ')
 	except:
