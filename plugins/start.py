@@ -30,7 +30,25 @@ else:
 
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client,message):
-	insert(int(message.chat.id))
+	old = insert(int(message.chat.id))
+	try:
+	    id = message.text.split(' ')
+	except:
+	    pass
+	if id:
+	    if old == True:
+	        try:
+	            await client.send_message(id,"Your Frind Alredy Using Our Bot")
+	        except:
+	             return
+	    else:
+	         await client.send_message(id,"Congrats! You Won 25MB Upload limit")
+	         _user_= find_one(int(id))
+	         limit = used_["uploadlimit"]
+	         new_limit = limit + 26214400     
+	         uploadlimit(int(id),new_limit)
+	         
+	         
 	await message.reply_text(text =f"""
 	Hello {wish} {message.from_user.first_name }
 	__I am file renamer bot, Please sent any telegram 
