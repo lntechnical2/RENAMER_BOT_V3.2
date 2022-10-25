@@ -20,7 +20,7 @@ async def start(client,message):
 	     epcho = int(time.mktime(time.strptime(str(today), pattern)))
 	     daily_(message.from_user.id,epcho)
 	     used_limit(message.from_user.id,0)
-	_newus = fimd_one(message.from_user.id)
+	_newus = find_one(message.from_user.id)
 	used = _newus["used_limit"]
 	limit = _newus["uploadlimit"]
 	remain = int(limit)- int(used)
