@@ -31,15 +31,30 @@ else:
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client,message):
 	old = insert(int(message.chat.id))
-	print(message.text)
 	try:
-	    id = message.text.split(' ')
+	    id = message.text.split(' ')[1]
 	except:
-	    pass
+	    await message.reply_text(text =f"""
+	Hello {wish} {message.from_user.first_name }
+	__I am file renamer bot, Please sent any telegram 
+	**Document Or Video** and enter new filename to rename it__
+	""",reply_to_message_id = message.id ,  
+	reply_markup=InlineKeyboardMarkup(
+	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
+	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
+	    return
 	if id:
 	    if old == True:
 	        try:
 	            await client.send_message(id,"Your Frind Alredy Using Our Bot")
+	            await message.reply_text(text =f"""
+	Hello {wish} {message.from_user.first_name }
+	__I am file renamer bot, Please sent any telegram 
+	**Document Or Video** and enter new filename to rename it__
+	""",reply_to_message_id = message.id ,  
+	reply_markup=InlineKeyboardMarkup(
+	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
+	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
 	        except:
 	             return
 	    else:
@@ -48,9 +63,7 @@ async def start(client,message):
 	         limit = used_["uploadlimit"]
 	         new_limit = limit + 26214400     
 	         uploadlimit(int(id),new_limit)
-	         
-	         
-	await message.reply_text(text =f"""
+	         await message.reply_text(text =f"""
 	Hello {wish} {message.from_user.first_name }
 	__I am file renamer bot, Please sent any telegram 
 	**Document Or Video** and enter new filename to rename it__
@@ -58,6 +71,7 @@ async def start(client,message):
 	reply_markup=InlineKeyboardMarkup(
 	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
 	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
+	         
 
 
 
