@@ -58,10 +58,10 @@ async def start(client,message):
 	        except:
 	             return
 	    else:
-	         await client.send_message(id,"Congrats! You Won 25MB Upload limit")
+	         await client.send_message(id,"Congrats! You Won 50MB Upload limit")
 	         _user_= find_one(int(id))
-	         limit = _user_["uploadlimit"]
-	         new_limit = limit + 26214400     
+	         limit = used_["uploadlimit"]
+	         new_limit = limit + 52428800
 	         uploadlimit(int(id),new_limit)
 	         await message.reply_text(text =f"""
 	Hello {wish} {message.from_user.first_name }
