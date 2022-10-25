@@ -11,12 +11,7 @@ from helper.progress import humanbytes
 
 @Client.on_message(filters.private & filters.command(["myplan"]))
 async def start(client,message):
-	used_ = find_one(message.from_user.id)
-	used = used_["used_limit"]
-	limit = used_["uploadlimit"]
-	remain = int(limit)- int(used)
-	user =  used_["usertype"]
-	ends = used_["prexdate"]
+	used_ = find_one(message.from_user.id)	
 	daily = used_["daily"]
 	expi = daily - int(time.mktime(time.strptime(str(date_.today()), '%Y-%m-%d')))
 	if expi != 0:
@@ -25,6 +20,12 @@ async def start(client,message):
 	     epcho = int(time.mktime(time.strptime(str(today), pattern)))
 	     daily_(message.from_user.id,epcho)
 	     used_limit(message.from_user.id,0)
+	_newus = fimd_one(message.from_user.id)
+	used = _newus["used_limit"]
+	limit = _newus["uploadlimit"]
+	remain = int(limit)- int(used)
+	user =  _newus["usertype"]
+	ends = _newus["prexdate"]
 	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
