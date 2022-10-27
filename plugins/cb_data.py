@@ -10,7 +10,7 @@ from PIL import Image
 import time
 from datetime import date as date_
 from datetime import timedelta,datetime
-from helper.ffmpeg import take_screen_shot,fixthumb
+from helper.ffmpeg import take_screen_shot,fix_thumb
 
 
 log_channel = int(os.environ.get("LOG_CHANNEL", ""))
