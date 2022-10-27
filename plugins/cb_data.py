@@ -191,7 +191,6 @@ async def vid(bot,update):
      		    ph_path = take_screen_shot(os.path.dirname(os.path.abspath(new_file_location)), random.randint(0, duration - 1))
      		    width, height, thumbnail =  fix_thumb(thumbnail_location)
      		except Exception as e:
-                    print(e)
      		    ph_path = None
      
      value = 2147483648
