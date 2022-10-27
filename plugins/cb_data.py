@@ -74,7 +74,10 @@ async def doc(bot,update):
      os.rename(old_file_name,file_path)
      user_id = int(update.message.chat.id)
      data = find(user_id)
-     c_caption = data[1] 
+     try:
+         c_caption = data[1]
+     except:
+         pass
      thumb = data[0]
      if c_caption:
         caption = f"{c_caption}" 
@@ -161,7 +164,10 @@ async def vid(bot,update):
      os.rename(old_file_name,file_path)
      user_id = int(update.message.chat.id)
      data = find(user_id)
-     c_caption = data[1] 
+     try:
+         c_caption = data[1]
+     except:
+         pass
      thumb = data[0]
      if c_caption:
         caption = f"{c_caption}" 
