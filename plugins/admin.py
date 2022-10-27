@@ -6,6 +6,18 @@ ADMIN = int(os.environ.get("ADMIN", 923943045))
 from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 
  
+@Client.on_message(filters.private & filters.user(ADMIN) & filters.command(["warn"]))
+async def warn(c, m):
+        if len(m.command) >= 3:
+            try:
+                user_id = m.text.split(' ', 2)[1]
+                reason = m.text.split(' ', 2)[2]
+                await m.reply_text("User Notfied Sucessfully")
+                await c.send_message(chat_id=int(user_id), text=reason)
+            except:
+                 await m.reply_text("User Not Notfied Sucessfully 😔")
+
+
 @Client.on_message(filters.private & filters.user(ADMIN) & filters.command(["addpremium"]))
 async def buypremium(bot, message):
 	await message.reply_text("Select Plan.........",quote=True,reply_markup=InlineKeyboardMarkup([[ 
