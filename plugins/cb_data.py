@@ -1,10 +1,12 @@
 from helper.progress import progress_for_pyrogram
+from helper.ffmpeg import take_screen_shot
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from helper.database import *
 import os
+import random
 from PIL import Image
 import time
 from datetime import date as date_
@@ -55,7 +57,7 @@ async def doc(bot,update):
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
      file = message.document or message.video or message.audio
-     ms = await update.message.edit("``` Trying To Download...```")
+     ms = await update.message.edit("```Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
      total_used = used + int(file.file_size)
@@ -145,7 +147,7 @@ async def vid(bot,update):
      file_path = f"downloads/{new_filename}"
      message = update.message.reply_to_message
      file = message.document or message.video or message.audio
-     ms = await update.message.edit("``` Trying To Download...```")
+     ms = await update.message.edit("```Trying To Download...```")
      used_limit(update.from_user.id,file.file_size)
      c_time = time.time()
      total_used = used + int(file.file_size)
@@ -162,6 +164,18 @@ async def vid(bot,update):
      dow_file_name = splitpath[1]
      old_file_name =f"downloads/{dow_file_name}"
      os.rename(old_file_name,file_path)
+     duration = 0
+     metadata = extractMetadata(createParser(file_path))
+     if metadata.has("duration"):
+     		duration = metadata.get('duration').seconds
+     thumb_image_path = await take_screen_shot(
+                path,
+                os.path.dirname(path),
+                random.randint(
+                        0,
+                        duration - 1
+                )
+     )
      user_id = int(update.message.chat.id)
      data = find(user_id)
      try:
@@ -186,7 +200,7 @@ async def vid(bot,update):
      		c_time = time.time()
      		
      else:
-     		ph_path = None
+     		ph_path = thumb_image_path
      
      value = 2147483648
      if value < file.file_size:
@@ -240,7 +254,7 @@ async def aud(bot,update):
      file = update.message.reply_to_message
      total_used = used + int(file.file_size)
      used_limit(update.from_user.id,total_used)
-     ms = await update.message.edit("``` Trying To Download...```")
+     ms = await update.message.edit("```Trying To Download...```")
      c_time = time.time()
      try:
      	path = await bot.download_media(message = file , progress=progress_for_pyrogram,progress_args=( "``` Trying To Download...```",  ms, c_time   ))
