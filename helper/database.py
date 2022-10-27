@@ -56,7 +56,8 @@ def find(chat_id):
 	x = dbcol.find(id)
 	for i in x:
              file = i["file_id"]
-             return file
+             file = i["caption"]
+             return [file, caption]
 
 def getid():
     values = []
