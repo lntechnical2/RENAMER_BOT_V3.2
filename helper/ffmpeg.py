@@ -1,20 +1,31 @@
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-
-import asyncio
 import os
-import time
+import asyncio
+from PIL import Image
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 
-
+async def fix_thumb(thumb):
+    width = 0
+    height = 0
+    try:
+        if thumb != None:
+            metadata = extractMetadata(createParser(thumb))
+            if metadata.has("width"):
+                width = metadata.get("width")
+            if metadata.has("height"):
+                height = metadata.get("height")
+                Image.open(thumb).convert("RGB").save(thumb)
+                img = Image.open(thumb)
+                img.resize((320, height))
+                img.save(thumb, "JPEG")
+    except Exception as e:
+        print(e)
+        thumb = None 
+       
+    return width, height, thumb
+    
 async def take_screen_shot(video_file, output_directory, ttl):
-    # https://stackoverflow.com/a/13891070/4723940
-    out_put_file_name = output_directory + \
-        "/" + str(time.time()) + ".jpg"
+    out_put_file_name = f"{output_directory}/{time.time()}.jpg"
     file_genertor_command = [
         "ffmpeg",
         "-ss",
@@ -25,19 +36,14 @@ async def take_screen_shot(video_file, output_directory, ttl):
         "1",
         out_put_file_name
     ]
-    # width = "90"
     process = await asyncio.create_subprocess_exec(
         *file_genertor_command,
-        # stdout must a pipe to be accessible as process.stdout
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
-    # Wait for the subprocess to finish
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
     if os.path.lexists(out_put_file_name):
         return out_put_file_name
-    else:
-        return None
-
+    return None
