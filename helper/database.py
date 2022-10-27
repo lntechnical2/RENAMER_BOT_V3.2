@@ -9,7 +9,7 @@ dbcol = db["user"]
 
 def insert(chat_id):
             user_id = int(chat_id)
-            user_det = {"_id":user_id,"file_id":None ,"daily":0 ,"date":0 , "uploadlimit" :2147483648,"used_limit":0,"usertype":"Free","prexdate" : None}
+            user_det = {"_id":user_id,"file_id":None ,"caption":None ,"daily":0 ,"date":0 , "uploadlimit" :2147483648,"used_limit":0,"usertype":"Free","prexdate" : None}
             try:
             	dbcol.insert_one(user_det)
             except:
@@ -21,6 +21,12 @@ def addthumb(chat_id, file_id):
 	
 def delthumb(chat_id):
 	dbcol.update_one({"_id":chat_id},{"$set":{"file_id":None}})
+
+def addcaption(chat_id, caption):
+       dbcol.update_one({"_id": chat_id},{"$set":{"caption": caption}})
+	
+def delcaption(chat_id): 
+        dbcol.update_one({"_id": chat_id},{"$set":{"caption":None}})
 	
 def dateupdate(chat_id,date):
 	dbcol.update_one({"_id":chat_id},{"$set":{"date":date}})
