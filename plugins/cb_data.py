@@ -192,6 +192,7 @@ async def vid(bot,update):
      		    width, height, thumbnail =  fix_thumb(thumbnail_location)
      		except Exception as e:
      		    ph_path = None
+     		    print(e)
      
      value = 2147483648
      if value < file.file_size:
