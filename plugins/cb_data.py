@@ -190,14 +190,15 @@ async def vid(bot,update):
      		try:
      		    ph_path = take_screen_shot(os.path.dirname(os.path.abspath(new_file_location)), random.randint(0, duration - 1))
      		    width, height, thumbnail =  fix_thumb(thumbnail_location)
-     		except:
+     		except Exception as e:
+                    print(e)
      		    ph_path = None
      
      value = 2147483648
      if value < file.file_size:
          await ms.edit("```Trying To Upload```")
          try:
-             filw = await app.send_video(log_channel,video= file_path,thumb=ph_path,width=width,height=height,duration=duration ,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
+             filw = await app.send_video(log_channel,video= file_path,thumb=ph_path,duration=duration ,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))
              from_chat = filw.chat.id
              mg_id = filw.id
              time.sleep(2)
@@ -221,7 +222,7 @@ async def vid(bot,update):
      		await ms.edit("```Trying To Upload```")
      		c_time = time.time()
      		try:
-     			await bot.send_video(update.from_user.id,video = file_path,thumb=ph_path,duration=duration,height=height,width=width,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
+     			await bot.send_video(update.from_user.id,video = file_path,thumb=ph_path,duration=duration,caption = caption,progress=progress_for_pyrogram,progress_args=( "```Trying To Uploading```",  ms, c_time   ))			
      			await ms.delete()
      			os.remove(file_path)
      		except Exception as e:
