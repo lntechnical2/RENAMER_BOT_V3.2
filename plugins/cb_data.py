@@ -1,5 +1,4 @@
 from helper.progress import progress_for_pyrogram
-from helper.ffmpeg import take_screen_shot
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 from hachoir.metadata import extractMetadata
@@ -164,18 +163,6 @@ async def vid(bot,update):
      dow_file_name = splitpath[1]
      old_file_name =f"downloads/{dow_file_name}"
      os.rename(old_file_name,file_path)
-     duration = 0
-     metadata = extractMetadata(createParser(file_path))
-     if metadata.has("duration"):
-     		duration = metadata.get('duration').seconds
-     thumb_image_path = await take_screen_shot(
-                path,
-                os.path.dirname(path),
-                random.randint(
-                        0,
-                        duration - 1
-                )
-     )
      user_id = int(update.message.chat.id)
      data = find(user_id)
      try:
@@ -200,7 +187,7 @@ async def vid(bot,update):
      		c_time = time.time()
      		
      else:
-     		ph_path = thumb_image_path
+     		ph_path = None
      
      value = 2147483648
      if value < file.file_size:
