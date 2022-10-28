@@ -8,15 +8,15 @@ async def upgrade(bot,update):
 	Price 0
 	
 	_____________________________
-	Only Upgrad Upload linmit 
-	Not Suport 4GB file Rename
+	**Only Upgrad Upload Limit
+	Not Suport 4GB file Rename**
 	
 	10 GB - 10rs 
 	50 GB -  30rs 
 	100 GB - 50 rs 
 	
 	_____________________________
-	
+	**It's Support 4GB File Rename**
 	**VIP 1 ** 
 	Daily  Upload  limit 5GB
 	Price Rs 25 🇮🇳/🌎 0.30$  per Month
