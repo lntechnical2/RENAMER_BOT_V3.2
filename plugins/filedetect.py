@@ -32,7 +32,7 @@ async def refunc(client,message):
         	except:
         		try:
         			out = filename.split(".")
-        			out_name = out[1]
+        			out_name = out[-1]
         			out_filename= new_name + "."+ out_name
         		except:
         			await message.reply_to_message.delete()
