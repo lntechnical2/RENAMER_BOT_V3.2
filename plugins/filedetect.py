@@ -14,6 +14,7 @@ async def refunc(client,message):
         	mg_id = media.reply_to_message.id
         	try:
         		out = new_name.split(".")
+        		out[1]
         		out_name = out[-1]
         		out_filename = new_name
         		await message.reply_to_message.delete()
