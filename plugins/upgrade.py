@@ -4,16 +4,38 @@ from pyrogram import Client , filters
 @Client.on_callback_query(filters.regex('upgrade'))
 async def upgrade(bot,update):
 	text = """**Free Plan User**
-	Daly  Upload limit 2GB
-	Price 0 
+	Daily  Upload limit 2GB
+	Price 0
+	
+	_____________________________
+	Only Upgrad Upload linmit 
+	Not Suport 4GB file Rename
+	
+	10 GB - 10rs 
+	50 GB -  30rs 
+	100 GB - 50 rs 
+	
+	_____________________________
 	
 	**VIP 1 ** 
-	Daly Upload  limit 10GB
-	Price Rs 55 🇮🇳/🌎 0.67$  per Month
+	Daily  Upload  limit 5GB
+	Price Rs 25 🇮🇳/🌎 0.30$  per Month
 	
 	**VIP 2 **
-	Daly Upload limit 5OGB
-	Price Rs 150 🇮🇳/🌎 1.82$  per Month
+	Daily Upload limit 1OGB
+	Price Rs 35  🇮🇳/🌎 0.42$  per Month
+	
+	**VIP3**
+	Daily Upload limit 30GB
+	Price Rs 50  🇮🇳/🌎 0.61$  per Month
+	
+	**VIP4**
+	Daily Upload limit 50GB
+	Price Rs 75 🇮🇳/🌎 0.91$  per Month
+	
+	**VIP**
+	Daily Upload limit 100GB 
+	Price Rs 110 🇮🇳/🌎 1.33$  per Month
 	
 	Pay Using Upi I'd ```lokamandc1224@oksbi```
 	
