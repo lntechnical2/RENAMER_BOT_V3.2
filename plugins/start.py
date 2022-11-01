@@ -6,7 +6,7 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from helper.progress import humanbytes
 
-from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata
+from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata,total_rename,total_size
 from pyrogram.file_id import FileId
 from helper.database import daily as daily_
 from helper.date import add_date ,check_expi
@@ -15,6 +15,8 @@ import datetime
 from datetime import date as date_
 STRING = os.environ.get("STRING","")
 log_channel = int(os.environ.get("LOG_CHANNEL",""))
+token = os.environ.get('TOKEN','')
+botid = token.split(':')[0]
 
 #Part of Day --------------------
 currentTime = datetime.datetime.now()
@@ -89,7 +91,9 @@ async def send_doc(client,message):
        		[ [ InlineKeyboardButton("Support 🇮🇳" ,url=f"https://t.me/{update_channel}") ]   ]))
        		return
        
-       
+       bot_data = find_one(botid)
+       prrename = bot_data['total_rename']
+       prsize = bot_data['total_size']
        user_deta = find_one(user_id)
        try:
        	used_date = user_deta["date"]
@@ -143,14 +147,20 @@ async def send_doc(client,message):
        		        pre_check = check_expi(buy_date)
        		        if pre_check == True:
        		            await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {humanize.naturalsize(file.file_size)}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
+       		            total_rename(botid,prrename)
+       		            total_size(botid,prsize,file.file_size)
        		        else:
        		            await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
+       		            return
        		    else:
        		          	await message.reply_text("Can't upload files bigger than 2GB ")
        		          	return
        		else:
        		    filesize = humanize.naturalsize(file.file_size)
        		    fileid = file.file_id
+       		    total_rename(botid,prrename)
+       		    total_size(botid,prsize,file.file_size)
        		    await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup(
        		[[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),
        		InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
+       		
