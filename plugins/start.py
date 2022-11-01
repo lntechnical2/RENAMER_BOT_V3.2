@@ -147,8 +147,8 @@ async def send_doc(client,message):
        		        pre_check = check_expi(buy_date)
        		        if pre_check == True:
        		            await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {humanize.naturalsize(file.file_size)}\n**Dc ID** :- {dcid}""",reply_to_message_id = message.id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
-       		            total_rename(botid,prrename)
-       		            total_size(botid,prsize,file.file_size)
+       		            total_rename(int(botid),prrename)
+       		            total_size(int(botid),prsize,file.file_size)
        		        else:
        		            await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		            return
