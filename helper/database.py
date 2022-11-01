@@ -12,6 +12,7 @@ def botdata(chat_id):
 	bot_id = int(chat_id)
 	try:
 		bot_data = {"_id":bot_id,"total_rename":0,"total_size":0}
+		dbcol.insert_one(bot_data)
 	except:
 		pass
 
