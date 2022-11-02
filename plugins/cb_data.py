@@ -181,7 +181,7 @@ async def vid(bot,update):
      if c_caption:
         vid_list = ["filename","filesize","duration"]
         new_tex = escape_invalid_curly_brackets(c_caption,vid_list)
-        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=datetime.timedelta(seconds=duration))
+        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=timedelta(seconds=duration))
      else:
         caption = f"**{new_filename}**"
      if thumb:
@@ -276,7 +276,7 @@ async def aud(bot,update):
      if c_caption:
         aud_list = ["filename","filesize","duration"]
         new_tex = escape_invalid_curly_brackets(c_caption,aud_list)
-        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=datetime.timedelta(seconds=duration))
+        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=timedelta(seconds=duration))
      else:
         caption = f"**{new_filename}**"
         
