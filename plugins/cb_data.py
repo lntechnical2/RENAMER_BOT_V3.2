@@ -1,4 +1,4 @@
-from helper.progress import progress_for_pyrogram
+ from helper.progress import progress_for_pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 from hachoir.metadata import extractMetadata
@@ -12,7 +12,7 @@ from datetime import date as date_
 from datetime import timedelta,datetime
 from helper.ffmpeg import take_screen_shot,fix_thumb
 from helper.progress import humanbytes
-
+from helper.set import escape_invalid_curly_brackets
 
 log_channel = int(os.environ.get("LOG_CHANNEL", ""))
 
@@ -82,7 +82,9 @@ async def doc(bot,update):
          pass
      thumb = data[0]
      if c_caption:
-        caption = c_caption.format(filename=new_filename,filesize=humanbytes(file.file_size))
+        doc_list= ["filename","filesize"]
+        new_tex = escape_invalid_curly_brackets(c_caption,doc_list)
+        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size))
      else:
         caption = f"**{new_filename}**"
      if thumb:
@@ -177,7 +179,9 @@ async def vid(bot,update):
      if metadata.has("duration"):
          duration = metadata.get('duration').seconds
      if c_caption:
-        caption = c_caption.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=duration)
+        vid_list = ["filename","filesize","duration"]
+        new_tex = escape_invalid_curly_brackets(c_caption,vid_list)
+        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=datetime.timedelta(seconds=duration))
      else:
         caption = f"**{new_filename}**"
      if thumb:
@@ -270,7 +274,9 @@ async def aud(bot,update):
      c_caption = data[1] 
      thumb = data[0]
      if c_caption:
-        caption = c_caption.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=duration)
+        aud_list = ["filename","filesize","duration"]
+        new_tex = escape_invalid_curly_brackets(c_caption,aud_list)
+        caption = new_tex.format(filename=new_filename,filesize=humanbytes(file.file_size),duration=datetime.timedelta(seconds=duration))
      else:
         caption = f"**{new_filename}**"
         
