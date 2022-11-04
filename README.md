@@ -24,7 +24,7 @@ Supports 4GB Files
 
 * STRING -  ```optional``` Session String Use @genStr_Bot For Premium Users To Upload 4GB File
 
-* LOG_CHANNEL - Channel Id Nedd Store Files Get Your channel id from Rose @MarieNews 
+* LOG_CHANNEL - Channel Id Nedd Store Files Get Your channel id from Rose @MissRose_bot
 
 ## Commands
 
@@ -39,6 +39,18 @@ Supports 4GB Files
 * `/broadcast` ```Admin Use Only``` Send Message To All Users
 
 * `/addpremium` ```Admin Use Only``` Add Users To Rename More Then 4Gb Files and Remove Time Limit 
+
+# 🚀 Deployment
+
+Deploy Your Own Bot ♥️ **Star 🌟 Fork 🍴 & Deploy**
+
+### 💜 Railway -Simple Way
+
+[![Deploy+on+Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/lntechnical2/RENAMER_BOT_V3&envs=CHANNEL,STRING,API_ID,API_HASH,TOKEN,ADMIN,LOG_CHANNEL,DB_URL,DB_NAME)
+
+### 💜 Heroku - simplest way
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?templatehttps://github.com/lntechnical2/RENAMER_BOT_V3)
 
 
 # How To Use Admin Command 
