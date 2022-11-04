@@ -10,32 +10,32 @@
     "success_url": "https://telegram.dog/lntechnical",
     "env": {
         "CHANNEL": {
-            "description": "Channel or Group user Name With @",
-            "required": False
+            "description": "Channel or Group user Name With @"
+            
          },
         "STRING": {
             "description": "Pyrogram String Session Use  @genStr_Bot",
-            "required": True
+            "required": true
         },
         "API_ID": {
             "description": "Your APP ID From my.telegram.org ",
-            "required": True
+            "required": true
         },
         "API_HASH": {
             "description": "Your API Hash From my.telegram.org ",
-            "required": True
+            "required": true
         },
         "TOKEN": {
             "description": "Your Bot Token From @BotFather",
-            "required": True
+            "required": true
         },
         "ADMIN": {
             "description":"Add Your User ID",
-            "required": True
+            "required": true
         },
         "LOG_CHANNEL":{
              "description":"Channel Id Nedd Store Files Get Your channel id from Rose @MissRose_bot",
-             "required": True
+             "required": true
         }
         
     },
