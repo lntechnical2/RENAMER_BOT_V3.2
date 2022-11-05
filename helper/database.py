@@ -18,7 +18,7 @@ def botdata(chat_id):
 
 
 def total_rename(chat_id,renamed_file):
-	now = renamed_file + 1
+	now = int(renamed_file) + 1
 	dbcol.update_one({"_id":chat_id},{"$set":{"total_rename":str(now)}})
 	
 def total_size(chat_id,total_size,now_file_size):
