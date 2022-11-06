@@ -23,7 +23,7 @@
 
         "CHANNEL": {
 
-            "description": "Channel or Group user Name With @"
+            "description": "Channel or Group user Name With @",
 
             "required":false
 
