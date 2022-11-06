@@ -79,7 +79,7 @@
 
         "DB_NAME":{
 
-               "description":"Database Name "
+               "description":"Database Name ",
 
                "required":true
 
