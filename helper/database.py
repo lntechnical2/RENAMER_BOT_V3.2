@@ -7,6 +7,12 @@ mongo = pymongo.MongoClient(DB_URL)
 db = mongo[DB_NAME]
 dbcol = db["user"]
 
+#Total User 
+
+def total_user():
+      user = db.collection.count()
+      return user
+      
 #insert bot Data 
 def botdata(chat_id):
 	bot_id = int(chat_id)
