@@ -10,7 +10,7 @@ dbcol = db["user"]
 #Total User 
 
 def total_user():
-      user = dbcol.find().count()
+      user = dbcol.count_documents({})
       return user
       
 #insert bot Data 
