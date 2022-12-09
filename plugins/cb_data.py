@@ -249,7 +249,8 @@ async def aud(bot,update):
      name = new_name.split(":-")
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
-     file = update.message.reply_to_message
+     message = update.message.reply_to_message
+     file = message.document or message.video or message.audio
      total_used = used + int(file.file_size)
      used_limit(update.from_user.id,total_used)
      ms = await update.message.edit("```Trying To Download...```")
