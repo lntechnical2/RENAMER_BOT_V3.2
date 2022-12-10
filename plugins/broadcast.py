@@ -22,15 +22,15 @@ async def broadcast(bot, message):
             roress = startsm - time.time()
             if (round(roress % 6.00) == 0):
                 try:
-                    await ms.edit(text=f"Message sent to {success} chat(s). {failed} chat(s) failed on receiving message. \nTotal - {tot}" )
+                    await ms.edit(text=f"Message sent to {success} chat(s). {failed} chat(s) failed on receiving message. \nTotal - {tot}")
                 except:
                     pass
             try:
      	        await message.reply_to_message.copy(id)
                 success += 1 
             except:
-     	        failed += 1
                 try:
+     	            failed += 1
      	            delete({"_id":id})
                 except:  	 
      	            pass
