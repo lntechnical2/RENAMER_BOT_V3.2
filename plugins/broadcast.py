@@ -32,10 +32,12 @@ async def broadcast(bot, message):
                     failed += 1
                     delete({"_id": id})
 
+            try:
+                await ms.edit(text=f"BROADCST COMPLETED\n\nSUCCESS : {success}\nFAILED : {failed}")
+            except:
+                pass
         except Exception as e:
             await ms.edit(text=f"ERROR : {e}")
-        else:
-            await ms.edit(text=f"BROADCST COMPLETED\n\nSUCCESS : {success}\nFAILED : {failed}")
 
 
 async def sndmg(message, id):
