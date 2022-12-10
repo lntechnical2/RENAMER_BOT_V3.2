@@ -25,16 +25,25 @@ async def broadcast(bot, message):
                         await ms.edit(text=f"Message sent to {success} chat(s). {failed} chat(s) failed on receiving message. \nTotal - {tot}")
                     except:
                         pass
-                try:
-     	            await message.reply_to_message.copy(id)
-                    success += 1 
-                except:
-                    try:
-     	                failed += 1
-     	                delete({"_id":id})
-                    except:  	 
-     	                pass
+                msmo = await sndmg(message, id)
+                if msmo is True:
+                    success += 1
+                else:
+                    failed += 1
+                    delete({"_id": id})
+
         except Exception as e:
             await ms.edit(text=f"ERROR : {e}")
         else:
             await ms.edit(text=f"BROADCST COMPLETED\n\nSUCCESS : {success}\nFAILED : {failed}")
+
+
+async def sndmg(message, id):
+
+    try:
+        await message.reply_to_message.copy(id)
+        return True
+    except:
+        return False 
+
+
