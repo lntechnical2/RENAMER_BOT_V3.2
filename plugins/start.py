@@ -1,4 +1,4 @@
-import os
+ import os
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 import time
 from pyrogram import Client, filters
@@ -160,10 +160,11 @@ async def send_doc(client,message):
        		          	await message.reply_text("Can't upload files bigger than 2GB ")
        		          	return
        		else:
-       		    pre_check = check_expi(buy_date)
-       		    if pre_check == False:
-       		        uploadlimit(message.from_user.id,2147483648)
-       		        usertype(message.from_user.id,"Free")
+       		    if buy_date:
+       		        pre_check = check_expi(buy_date)
+       		        if pre_check == False:
+       		            uploadlimit(message.from_user.id,2147483648)
+       		            usertype(message.from_user.id,"Free")
        		        
        		    filesize = humanize.naturalsize(file.file_size)
        		    fileid = file.file_id
