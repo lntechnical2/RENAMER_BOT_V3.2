@@ -99,6 +99,7 @@ async def send_doc(client,message):
        	used_date = user_deta["date"]
        	buy_date= user_deta["prexdate"]
        	daily = user_deta["daily"]
+       	user_type = user_deta["usertype"]
        except:
            await message.reply_text("database has been Cleared click on /start")
            return
@@ -106,7 +107,7 @@ async def send_doc(client,message):
            
        c_time = time.time()
        
-       if buy_date==None:
+       if user_type=="Free":
            LIMIT = 600
        else:
            LIMIT = 50
@@ -150,12 +151,20 @@ async def send_doc(client,message):
        		            total_rename(int(botid),prrename)
        		            total_size(int(botid),prsize,file.file_size)
        		        else:
+       		            uploadlimit(message.from_user.id,2147483648)
+       		            usertype(message.from_user.id,"Free")
+	
        		            await message.reply_text(f'Your Plane Expired On {buy_date}',quote=True)
        		            return
        		    else:
        		          	await message.reply_text("Can't upload files bigger than 2GB ")
        		          	return
        		else:
+       		    pre_check = check_expi(buy_date)
+       		    if pre_check == False:
+       		        uploadlimit(message.from_user.id,2147483648)
+       		        usertype(message.from_user.id,"Free")
+       		        
        		    filesize = humanize.naturalsize(file.file_size)
        		    fileid = file.file_id
        		    total_rename(int(botid),prrename)
