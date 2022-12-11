@@ -28,10 +28,11 @@ async def start(client,message):
 	remain = int(limit)- int(used)
 	user =  _newus["usertype"]
 	ends = _newus["prexdate"]
-	pre_check = check_expi(ends)
-	if pre_check == False:
-	    uploadlimit(message.from_user.id,2147483648)
-	    usertype(message.from_user.id,"Free")
+	if ends:
+	    pre_check = check_expi(ends)
+	    if pre_check == False:
+	        uploadlimit(message.from_user.id,2147483648)
+	        usertype(message.from_user.id,"Free")
 	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
