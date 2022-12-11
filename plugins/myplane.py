@@ -7,7 +7,9 @@ import datetime
 from datetime import timedelta, date ,datetime
 from datetime import date as date_
 from helper.progress import humanbytes
-
+from helper.database import daily as daily_
+from helper.date import check_expi
+from helper.database import uploadlimit , usertype
 
 @Client.on_message(filters.private & filters.command(["myplan"]))
 async def start(client,message):
@@ -26,6 +28,10 @@ async def start(client,message):
 	remain = int(limit)- int(used)
 	user =  _newus["usertype"]
 	ends = _newus["prexdate"]
+	pre_check = check_expi(ends)
+	if pre_check == False:
+	    uploadlimit(message.from_user.id,2147483648)
+	    usertype(message.from_user.id,"Free")
 	if ends == None:
 	    text = f"User ID:- ```{message.from_user.id}```\nPlan :- {user}\nDaly Upload Limit :- {humanbytes(limit)}\nToday Used :- {humanbytes(used)}\nRemain:- {humanbytes(remain)}"
 	else:
