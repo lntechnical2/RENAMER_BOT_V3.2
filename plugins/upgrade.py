@@ -10,15 +10,11 @@ async def upgrade(bot,update):
 	
 	**VIP 1 ** 
 	Daily  Upload  limit 10GB
-	Price Rs 55  🇮🇳/🌎 0.67$  per Month
+	Price Rs 1231  🇮🇳/🌎 15$  per Year 
 	
 	**VIP 2 **
 	Daily Upload limit 50GB
-	Price Rs 80  🇮🇳/🌎 0.97$  per Month
-	
-	**VIP3**
-	Daily Upload limit 100GB
-	Price Rs 150  🇮🇳/🌎 1.81$  per Month
+	Price Rs  2051  🇮🇳/🌎 25$  per Year
 	
 	
 	Pay Using Upi I'd ```9480251952@paytm```
