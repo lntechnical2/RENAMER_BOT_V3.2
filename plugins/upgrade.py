@@ -9,11 +9,11 @@ async def upgrade(bot,update):
 	Price 0
 	
 	**VIP 1 ** 
-	Daily  Upload  limit 10GB
+	Daily  Upload  limit 50GB
 	Price Rs 1231  🇮🇳/🌎 15$  per Year 
 	
 	**VIP 2 **
-	Daily Upload limit 50GB
+	Daily Upload limit Unlimited 
 	Price Rs  2051  🇮🇳/🌎 25$  per Year
 	
 	
@@ -35,11 +35,11 @@ async def upgradecm(bot,message):
 	Price 0
 	
 	**VIP 1 ** 
-	Daily  Upload  limit 10GB
+	Daily  Upload  limit 50GB
 	Price Rs 1231  🇮🇳/🌎 15$  per Year 
 	
 	**VIP 2 **
-	Daily Upload limit 50GB
+	Daily Upload limit Unlimited
 	Price Rs  2051  🇮🇳/🌎 25$  per Year
 	
 	
