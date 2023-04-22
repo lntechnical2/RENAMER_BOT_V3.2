@@ -66,6 +66,9 @@ def usertype(chat_id,type):
 def uploadlimit(chat_id,limit):
 	dbcol.update_one({"_id":chat_id},{"$set":{"uploadlimit":limit}})
 
+def backpre(chat_id):
+    dbcol.update_one({"_id":chat_id},{"$set":{"prexdate":None}})
+    
 def addpre(chat_id):
     date = add_date()
     dbcol.update_one({"_id":chat_id},{"$set":{"prexdate":date[0]}})
