@@ -6,7 +6,7 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from helper.progress import humanbytes
 
-from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata,total_rename,total_size
+from helper.database import  insert ,find_one,used_limit,usertype,uploadlimit,addpredata,total_rename,total_size,usertype
 from pyrogram.file_id import FileId
 from helper.database import daily as daily_
 from helper.date import add_date ,check_expi
@@ -17,6 +17,16 @@ STRING = os.environ.get("STRING","")
 log_channel = int(os.environ.get("LOG_CHANNEL",""))
 token = os.environ.get('TOKEN','')
 botid = token.split(':')[0]
+
+DB_NAME = os.environ.get("DB_NAME","")
+DB_URL = os.environ.get("DB_URL","")
+mongo = pymongo.MongoClient(DB_URL)
+db = mongo[DB_NAME]
+dbcol = db["promo"]
+
+def profind(id):
+	return dbcol.find_one({"_id":id})
+
 
 #Part of Day --------------------
 currentTime = datetime.datetime.now()
@@ -33,6 +43,9 @@ else:
 @Client.on_message(filters.private & filters.command(["start"]))
 async def start(client,message):
 	old = insert(int(message.chat.id))
+	user_id = message.from_user.id
+	letdata = profind(user_id)
+	procode = letdata["promo"]	
 	try:
 	    id = message.text.split(' ')[1]
 	except:
@@ -46,37 +59,10 @@ async def start(client,message):
 	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
 	    return
 	if id:
-	    if old == True:
-	        try:
-	            await client.send_message(id,"Your Frind Alredy Using Our Bot")
-	            await message.reply_text(text =f"""
-	Hello {wish} {message.from_user.first_name }
-	__I am file renamer bot, Please sent any telegram 
-	**Document Or Video** and enter new filename to rename it__
-	""",reply_to_message_id = message.id ,  
-	reply_markup=InlineKeyboardMarkup(
-	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
-	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
-	        except:
-	             return
-	    else:
-	         await client.send_message(id,"Congrats! You Won 100MB Upload limit")
-	         _user_= find_one(int(id))
-	         limit = _user_["uploadlimit"]
-	         new_limit = limit + 104857600
-	         uploadlimit(int(id),new_limit)
-	         await message.reply_text(text =f"""
-	Hello {wish} {message.from_user.first_name }
-	__I am file renamer bot, Please sent any telegram 
-	**Document Or Video** and enter new filename to rename it__
-	""",reply_to_message_id = message.id ,  
-	reply_markup=InlineKeyboardMarkup(
-	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
-	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
-	         
-
-
-
+	    id == procode:
+	        await message.reply_text("You Can Use Now ")
+	        uploadlimit(int(user_id),10737418240)
+	        usertype(int(user_id),"NORMAL")
 @Client.on_message(filters.private &( filters.document | filters.audio | filters.video ))
 async def send_doc(client,message):
        update_channel = CHANNEL
