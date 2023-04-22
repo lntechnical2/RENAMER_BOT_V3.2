@@ -59,7 +59,7 @@ async def start(client,message):
 	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
 	    return
 	if id:
-	    id == procode:
+	  if id == procode:
 	        await message.reply_text("You Can Use Now ")
 	        uploadlimit(int(user_id),10737418240)
 	        usertype(int(user_id),"NORMAL")
