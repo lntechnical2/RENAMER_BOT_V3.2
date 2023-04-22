@@ -1,5 +1,4 @@
 import os
-import pymongo
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 import time
 from pyrogram import Client, filters
@@ -46,7 +45,10 @@ async def start(client,message):
 	old = insert(int(message.chat.id))
 	user_id = message.from_user.id
 	letdata = profind(user_id)
-	procode = letdata["promo"]	
+	try:
+	    procode = letdata["promo"]
+	except:
+	    pass	
 	try:
 	    id = message.text.split(' ')[1]
 	except:
@@ -60,10 +62,10 @@ async def start(client,message):
 	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
 	    return
 	if id:
-	  if id == procode:
-	        await message.reply_text("You Can Use Now ")
-	        uploadlimit(int(user_id),10737418240)
-	        usertype(int(user_id),"NORMAL")
+	        if id == procode:
+	            await message.reply_text("You Can Use Now ")
+	            uploadlimit(int(user_id),10737418240)
+	            usertype(int(user_id),"NORMAL")
 @Client.on_message(filters.private &( filters.document | filters.audio | filters.video ))
 async def send_doc(client,message):
        update_channel = CHANNEL
