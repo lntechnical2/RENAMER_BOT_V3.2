@@ -101,7 +101,7 @@ async def send_doc(client,message):
        
        if user_type=="Free":
            LIMIT = 600
-           await message.reply_text("Hey You are free user . wait for next update you can't use now ")
+           await message.reply_text(f"Complete The Task and get Free subscription per day . Watch full video https://renameweb.herokuapp.com/{message.from_user.id} ")
            return
        else:
            LIMIT = 50
