@@ -45,11 +45,8 @@ else:
 async def start(client,message):
 	old = insert(int(message.chat.id))
 	user_id = message.from_user.id
-	letdata = profind(str(user_id))
-	try:
-	    procode = letdata["promo"]
-	except:
-	    pass	
+	letdata = profind(int(user_id))
+	procode = letdata["promo"]	
 	try:
 	    id = message.text.split(' ')[1]
 	except:
