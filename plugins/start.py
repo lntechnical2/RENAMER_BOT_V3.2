@@ -45,7 +45,7 @@ else:
 async def start(client,message):
 	old = insert(int(message.chat.id))
 	user_id = message.from_user.id
-	letdata = profind(user_id)
+	letdata = profind(str(user_id))
 	try:
 	    procode = letdata["promo"]
 	except:
