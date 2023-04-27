@@ -101,8 +101,10 @@ async def send_doc(client,message):
        
        if user_type=="Free":
            LIMIT = 600
-           await message.reply_text(f"Complete The Task and get Free subscription per day . Watch full video https://renameweb.herokuapp.com/{message.from_user.id} ")
+           await message.reply_text(f"Complete The Task and get Free subscription per day . Watch full video https://lntechnical.works/{message.from_user.id} ")
            return
+       elif user_type=="NORMAL":
+           LIMIT = 350
        else:
            LIMIT = 50
        then = used_date+ LIMIT
@@ -129,7 +131,9 @@ async def send_doc(client,message):
        			pattern = '%Y-%m-%d'
        			epcho = int(time.mktime(time.strptime(str(today), pattern)))
        			daily_(message.from_user.id,epcho)
-       			used_limit(message.from_user.id,0)			     		
+       			used_limit(message.from_user.id,0)
+       			usertype(message.from_user.id,"Free")
+			     		
        		remain = limit- used
        		if remain < int(file.file_size):
        		    await message.reply_text(f"Sorry! I can't upload files that are larger than {humanbytes(limit)}. File size detected {humanbytes(file.file_size)}\nUsed Daly Limit {humanbytes(used)} If U Want to Rename Large File Upgrade Your Plan ",reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("Upgrade 💰💳",callback_data = "upgrade") ]]))
