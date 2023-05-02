@@ -104,9 +104,9 @@ async def send_doc(client,message):
            await message.reply_text(f"Complete The Task and get Free subscription per day . Watch full video https://lntechnical.works/{message.from_user.id} ")
            return
        elif user_type=="NORMAL":
-           LIMIT = 350
+           LIMIT = 250
        else:
-           LIMIT = 50
+           LIMIT = 30
        then = used_date+ LIMIT
        left = round(then - c_time)
        conversion = datetime.timedelta(seconds=left)
@@ -132,7 +132,8 @@ async def send_doc(client,message):
        			epcho = int(time.mktime(time.strptime(str(today), pattern)))
        			daily_(message.from_user.id,epcho)
        			used_limit(message.from_user.id,0)
-       			usertype(message.from_user.id,"Free")
+       			if user_type == "NORMAL":
+       				usertype(message.from_user.id,"Free")
 			     		
        		remain = limit- used
        		if remain < int(file.file_size):
