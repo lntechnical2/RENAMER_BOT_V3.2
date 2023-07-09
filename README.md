@@ -1,67 +1,84 @@
-# RENAMER_BOT_V3
-Telegram renamer bot
-Supports 4GB Files 
+# Rename bot - chat bot
+It is repository for chat bot: [@Rename bot](https://t.me/Rename bot)
 
-## Join Railway
+## What it is?
+This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
 
-<a href="https://railway.app?referralCode=RFr_Ev">Join To Railway</a>
+[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
 
-## Configs 
+A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
 
-* TOKEN  - Get bot token from @BotFather
+## Create your own bot for Telegram from this Git repo
 
-* API_ID        - From my.telegram.org 
+How to create bot?
+1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
+2. Create bot in App and add Secret Token
+3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
+4. Do import for this git repo
 
-* API_HASH      - From my.telegram.org 
+Now you can talk with yours new Telegram Bot
 
-* ADMIN         - Your User ID 
+See [more](https://help.bots.business/getting-started)
 
-* DB_URL  - Mongo Database URL from https://cloud.mongodb.com/
+## Commands - in commands folder
+File name - it is command name (Bot it can be rewritten in command description)
 
-* DB_NAME  - ```optional``` Your database name from mongoDB. Default will be 'my'
+Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
 
-* CHANNEL        - ```optional``` Channel user Name without @
+### Command description
+It is file header:
 
-* STRING -  ```optional``` Session String Use @genStr_Bot For Premium Users To Upload 4GB File
+    /*CMD
+      command: /test
+      help: this is help for ccommand
+      need_reply: [ true or false here ]
+      auto_retry_time: [ time in sec ]
+      answer: it is example answer for /test command
+      keyboard: button1, button2
+      aliases: /test2, /test3
+    CMD*/
 
-* LOG_CHANNEL - Channel Id Nedd Store Files Get Your channel id from Rose @MissRose_bot
+See [more](https://help.bots.business/commands)
 
-## Commands
+### Command body
+It is command code in JavaScript.
+Use Bot Java Script for logic in command.
 
-* `/start` Start Messsage 
+For example:
+> Bot.sendMessage(2+2);
 
-* `/viewthumb` View Your Saved thumbnail
-
-* `/delthumb` Delete Your Thumbnail
-
-* `/about` About Bot 
-
-* `/broadcast` ```Admin Use Only``` Send Message To All Users
-
-* `/addpremium` ```Admin Use Only``` Add Users To Rename More Then 4Gb Files and Remove Time Limit 
-
-# 🚀 Deployment
-
-Deploy Your Own Bot ♥️ **Star 🌟 Fork 🍴 & Deploy**
-
-### 💜 Railway -Simple Way
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/4x-y8J?referralCode=RFr_Ev)
-### 💜 Heroku - simplest way
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?templatehttps://github.com/lntechnical2/RENAMER_BOT_V3)
+See [more](https://help.bots.business/scenarios-and-bjs)
 
 
-# How To Use Admin Command 
-<p align="center">
-    <img src="https://te.legra.ph/file/e4f69a97c8384ec3d5e88.jpg">
-</p>
+## Libraries - in libs folder
+You can store common code in the libs folder. File name - it is library name.
 
-<p align="center">
-    <img src="https://te.legra.ph/file/f5edd5d4c0029944a0c3d.jpg">
-</p>
+For example code in myLib.js:
 
-# Tutorial Video 
+    function hello(){ Bot.sendMessage("Hello from lib!") }
+    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
 
-<a href="https://youtu.be/03jQRyMVFCs"><img src="https://img.shields.io/badge/How%20To%20Deploy-blue.svg?logo=Youtube"></a>
-<a href="https://youtu.be/03jQRyMVFCs"><img src="https://img.shields.io/youtube/views/03jQRyMVFCs?style=social">
+    publish({
+      sayHello: hello,
+      sayGoodbyeTo: goodbye
+    })
+
+then you can run in any bot's command:
+
+    Libs.myLib.hello()
+    Libs.myLib.sayGoodbyeTo("Alice")
+
+See [more](https://help.bots.business/git/library)
+
+## Other bots example
+See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+
+
+## Other help
+[Help.bots.business](https://help.bots.business)
+
+## API
+See [API](https://api.bots.business/docs#/docs/summary)
+
+
+![](https://bots.business/images/web-logo.png)
